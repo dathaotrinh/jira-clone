@@ -48,4 +48,10 @@ hr {
   background-color: #F8F9FA;
 }
 
+.side-icon {
+  cursor: pointer;
+}
 
+.side-icon:hover {
+  border: 1px dotted white;
+}

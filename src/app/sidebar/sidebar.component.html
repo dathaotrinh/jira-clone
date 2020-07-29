@@ -1,11 +1,21 @@
 <!-- outer sidenav -->
 <mat-sidenav-container id="sidebar-wrapper">
-  <mat-sidenav id="outer-container" mode="side" opened>outer content
+  <mat-sidenav id="outer-container" mode="side" opened>
+    <div class="side-icon mt-4 text-center">
+      <mat-icon>grade</mat-icon>
+    </div>
+    <div class="side-icon mt-4 text-center">
+      <mat-icon>search</mat-icon>
+    </div>
+    <div class="side-icon  mt-4 text-center">
+      <mat-icon>add</mat-icon>
+    </div>
+
   </mat-sidenav>
 
   <mat-sidenav-content>
     <!-- inner sidenav -->
-    <mat-sidenav-container  id="sidebar-wrapper" *ngIf="opened">
+    <mat-sidenav-container id="sidebar-wrapper" *ngIf="opened">
       <mat-sidenav id="inner-container" mode="side" opened>
         <div class="sidebar-heading text-center mt-3" style="color: black;">Jira Clone</div>
         <hr>
