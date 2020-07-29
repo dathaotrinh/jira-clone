@@ -1,12 +1,9 @@
 .board {
-  /* display: flex; */
   width: 100%;
 }
 
 .column {
   min-width: 250px;
-  /* column-width: 300px; */
-
   min-height: 500px;
   background-color: #F4F5F7;
 }
@@ -18,7 +15,6 @@
 
 .item-box {
   padding: 20px 10px;
-  /* border: solid 1px #ccc; */
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;
