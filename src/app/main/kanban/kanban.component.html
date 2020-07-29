@@ -1,0 +1,27 @@
+<div class="row mx-5">
+  <div class="col col-xs-3 mr-3">
+    <div class="h6 text-center mt-2 bold">Backlog {{backlog.length}}</div>
+    <div cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog" [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of backlog" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+  <div class="col col-xs-3 mr-3">
+    <div class="h6 text-center mt-2">Selected For Development {{selected.length}}</div>
+    <div cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected" [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of selected" cdkDrag>{{item}}</div>
+    </div>
+
+  </div>
+  <div class="col col-xs-3 mr-3">
+    <div class="h6 text-center mt-2">In Progress {{inprogress.length}}</div>
+    <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress" [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of inprogress" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+  <div class="col col-xs-3 mr-3">
+    <div class="h6 text-center mt-2">Done {{done.length}}</div>
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
