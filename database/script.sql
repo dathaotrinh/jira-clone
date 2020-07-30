@@ -3,6 +3,8 @@ drop schema if exists jira_clone;
 create schema jira_clone;
 use jira_clone;
 
+--project related database
+
 drop table if exists project;
 
 create table project (
@@ -14,6 +16,8 @@ create table project (
     primary key project(project_id)
 );
 
+
+-- person related database
 
 drop table if exists person;
 
@@ -52,6 +56,7 @@ create table auth (
 );
 
 
+-- task related database
 
 drop table if exists task;
 
@@ -75,4 +80,16 @@ create table project_task (
     references project(project_id),
     constraint fk_task_project foreign key (task_id)
     references task(task_id)
+);
+
+drop table if exists task_person;
+
+create table task_person (
+		task_id int auto_increment,
+		person_id varchar(100) not null,
+		primary key task_person(task_id, person_id),
+		constraint fk_task_person foreign key (task_id)
+		references task(task_id),
+		constraint fk_person_task foreign key (person_id)
+		references person(person_id)
 );
