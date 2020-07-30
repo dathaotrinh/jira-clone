@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SettingsComponent } from './main/settings/settings.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     AppComponent,
     SidebarComponent,
     MainComponent,
-    KanbanComponent
+    KanbanComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
