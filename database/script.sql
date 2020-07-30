@@ -12,7 +12,7 @@ create table project (
     project_title varchar(100) not null,
     project_key varchar(100) not null,
     project_image varchar(100),
-    created_date timestamp,
+    created_date timestamp not null,
     primary key project(project_id)
 );
 
@@ -65,8 +65,8 @@ create table task (
     task_title varchar(100) not null,
     task_description varchar(100) not null,
     task_attachment varchar(100),
-    created_date timestamp,
-    last_updated timestamp,
+    created_date timestamp not null,
+    last_updated timestamp not null,
     primary key task(task_id)
 );
 
@@ -90,6 +90,31 @@ create table task_person (
 		primary key task_person(task_id, person_id),
 		constraint fk_task_person foreign key (task_id)
 		references task(task_id),
+		constraint fk_person_task foreign key (person_id)
+		references person(person_id)
+);
+
+-- comment table
+
+drop table if exists comment;
+
+create table comment (
+  	comment_id int auto_increment,
+    content varchar(32765) not null,
+    created_date timestamp not null,
+		fk_task_id int auto_increment not null,
+    primary key comment(comment_id)
+);
+
+
+drop table if exists comment_person;
+
+create table comment_person (
+		person_id varchar(100),
+		comment_id int auto_increment not null,
+		primary key comment_person(comment_id, person_id),
+		constraint fk_comment_person foreign key (comment_id)
+		references comment(comment_id),
 		constraint fk_person_task foreign key (person_id)
 		references person(person_id)
 );
