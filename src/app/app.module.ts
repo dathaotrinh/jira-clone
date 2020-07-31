@@ -33,14 +33,15 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { Router, RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 registerLocaleData(en);
 
 const routes = [
-  {path: "project", component: MainComponent, children: [
+ {path: "project", component: MainComponent, children: [
     {path: "kanban-board", component: KanbanComponent},
     {path: "settings", component: SettingsComponent}
-  ]}
+ ]}
 ];
 
 @NgModule({
@@ -49,7 +50,8 @@ const routes = [
     SidebarComponent,
     MainComponent,
     KanbanComponent,
-    SettingsComponent
+    SettingsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
