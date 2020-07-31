@@ -1,81 +1,89 @@
-<div class="div" style="width: 100%; height: 100%;" >
-<div class="row mx-2">
-  <div class="column mr-3">
-
-    <div cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog"
-      [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
-
-      <div>
-        <div class="h6 text-center my-4">Backlog {{backlog.length}}</div>
-      </div>
-
-      <div>
-        <div class="item-box" *ngFor="let item of backlog" cdkDrag>
-          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          {{item}}
-          <div *ngIf="backlog.length === 0"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="column mr-3">
-    <div cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected"
-      [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
-
-      <div>
-        <div class="h6 text-center mt-2 my-4">Selected For Development {{selected.length}}</div>
-      </div>
-
-      <div>
-        <div class="item-box" *ngFor="let item of selected" cdkDrag>
-          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          {{item}}
-        </div>
-        <div *ngIf="selected.length === 0"></div>
-      </div>
-
-    </div>
-
-  </div>
-  <div class="column mr-3">
-    <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
-      [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
-
-      <div>
-        <div class="h6 text-center mt-2 my-4">In Progress {{inprogress.length}}</div>
-      </div>
-
-      <div>
-        <div class="item-box" *ngFor="let item of inprogress" cdkDrag>
-          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          {{item}}
-        </div>
-        <div *ngIf="inprogress.length === 0"></div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="column mr-3">
-    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
-      <div>
-
-        <div class="h6 text-center my-4">Done {{done.length}}</div>
-      </div>
-
-      <div>
-        <div class="item-box" *ngFor="let item of done" cdkDrag>
-          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          {{item}}
-        </div>
-        <div *ngIf="done.length === 0"></div>
-      </div>
-
-    </div>
-  </div>
-
+<!-- Kanban Board -->
+<div class="div mx-5 mb-4">
+  <h1 class="mt-4">Kanban Board</h1>
+  <input placeholder="Search">
+  <button class="btn">Only My Issues</button>
+  <button class="btn">Recently Updated</button>
 </div>
+
+<div class="div" style="width: 100%; height: 100%;">
+  <div class="row mx-2">
+    <div class="column mr-3">
+
+      <div cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog"
+        [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
+
+        <div>
+          <div class="h6 text-center my-4">Backlog {{backlog.length}}</div>
+        </div>
+
+        <div>
+          <div class="item-box" *ngFor="let item of backlog" cdkDrag>
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            {{item}}
+            <div *ngIf="backlog.length === 0"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="column mr-3">
+      <div cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected"
+        [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
+
+        <div>
+          <div class="h6 text-center mt-2 my-4">Selected For Development {{selected.length}}</div>
+        </div>
+
+        <div>
+          <div class="item-box" *ngFor="let item of selected" cdkDrag>
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            {{item}}
+          </div>
+          <div *ngIf="selected.length === 0"></div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="column mr-3">
+      <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
+        [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
+
+        <div>
+          <div class="h6 text-center mt-2 my-4">In Progress {{inprogress.length}}</div>
+        </div>
+
+        <div>
+          <div class="item-box" *ngFor="let item of inprogress" cdkDrag>
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            {{item}}
+          </div>
+          <div *ngIf="inprogress.length === 0"></div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="column mr-3">
+      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
+        <div>
+
+          <div class="h6 text-center my-4">Done {{done.length}}</div>
+        </div>
+
+        <div>
+          <div class="item-box" *ngFor="let item of done" cdkDrag>
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            {{item}}
+          </div>
+          <div *ngIf="done.length === 0"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
