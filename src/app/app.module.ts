@@ -20,6 +20,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SettingsComponent } from './main/settings/settings.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+// ng zorro
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+registerLocaleData(en);
 
 
 @NgModule({
@@ -38,9 +52,17 @@ import { SettingsComponent } from './main/settings/settings.component';
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    DragDropModule
+    DragDropModule,
+    FormsModule,
+    HttpClientModule,
+    NzFormModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzSelectModule,
+    NzButtonModule
+
   ],
-  providers: [MainService],
+  providers: [MainService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

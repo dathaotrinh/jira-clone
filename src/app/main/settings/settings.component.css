@@ -1,0 +1,12 @@
+[nz-form] {
+  max-width: 1000px;
+}
+
+
+.save-area{
+  margin-bottom: 8px;
+}
+
+.cancel-btn {
+  border: none;
+}
