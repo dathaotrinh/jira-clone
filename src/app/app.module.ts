@@ -32,9 +32,16 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { Router, RouterModule } from '@angular/router';
 
 registerLocaleData(en);
 
+const routes = [
+  {path: "project", component: AppComponent, children: [
+    {path: "kanban-board", component: KanbanComponent},
+    {path: "settings", component: SettingsComponent}
+  ]}
+];
 
 @NgModule({
   declarations: [
@@ -59,8 +66,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzInputModule,
     NzSelectModule,
-    NzButtonModule
-
+    NzButtonModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [MainService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

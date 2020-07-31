@@ -6,6 +6,7 @@
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
+  border-right: 1px solid lightgrey;
 }
 
 #sidebar-wrapper .sidebar-heading {
