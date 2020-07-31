@@ -37,7 +37,7 @@ import { Router, RouterModule } from '@angular/router';
 registerLocaleData(en);
 
 const routes = [
-  {path: "project", component: AppComponent, children: [
+  {path: "project", component: MainComponent, children: [
     {path: "kanban-board", component: KanbanComponent},
     {path: "settings", component: SettingsComponent}
   ]}
