@@ -9,6 +9,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main.component';
 import { KanbanComponent } from './main/kanban/kanban.component';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 // Services
 import { MainService } from './shared/main.service';
@@ -32,8 +34,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { Router, RouterModule, Route, Routes } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 // breadcrumb
 import {BreadcrumbModule} from 'angular-crumbs';
@@ -76,6 +77,7 @@ const routes: Routes = [
     NzButtonModule,
     NzBreadCrumbModule,
     BreadcrumbModule,
+    NzAvatarModule,
     RouterModule.forRoot(routes)
   ],
   providers: [MainService, { provide: NZ_I18N, useValue: en_US }],
