@@ -34,14 +34,18 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { Router, RouterModule, Route, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+
+// breadcrumb
+import {BreadcrumbModule} from 'angular-crumbs';
+
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
 registerLocaleData(en);
 
 const routes: Routes = [
- {path: "project", component: MainComponent, children: [
-    {path: "kanban-board", component: KanbanComponent},
-    {path: "settings", component: SettingsComponent}
+ {path: "project", component: MainComponent, data: { breadcrumb: "Project"}, children: [
+    {path: "kanban-board", data: { breadcrumb: "Kanban Board"}, component: KanbanComponent},
+    {path: "settings", data: { breadcrumb: "Settings"}, component: SettingsComponent}
  ]}
 ];
 
@@ -71,6 +75,7 @@ const routes: Routes = [
     NzSelectModule,
     NzButtonModule,
     NzBreadCrumbModule,
+    BreadcrumbModule,
     RouterModule.forRoot(routes)
   ],
   providers: [MainService, { provide: NZ_I18N, useValue: en_US }],
