@@ -38,8 +38,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 // breadcrumb
 import {BreadcrumbModule} from 'angular-crumbs';
-
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { LoginComponent } from './main/login/login.component';
 
 registerLocaleData(en);
 
@@ -47,7 +47,8 @@ const routes: Routes = [
  {path: "project", component: MainComponent, data: { breadcrumb: "Project"}, children: [
     {path: "kanban-board", data: { breadcrumb: "Kanban Board"}, component: KanbanComponent},
     {path: "settings", data: { breadcrumb: "Settings"}, component: SettingsComponent}
- ]}
+ ]},
+ {path: "login", component: LoginComponent, data: {breadcrumb: "Login"}}
 ];
 
 @NgModule({
@@ -57,7 +58,8 @@ const routes: Routes = [
     MainComponent,
     KanbanComponent,
     SettingsComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
