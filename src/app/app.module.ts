@@ -44,6 +44,7 @@ import { LoginComponent } from './main/login/login.component';
 registerLocaleData(en);
 
 const routes: Routes = [
+  {path: "", redirectTo: "login", pathMatch: "full"},
  {path: "project", component: MainComponent, data: { breadcrumb: "Project"}, children: [
     {path: "kanban-board", data: { breadcrumb: "Kanban Board"}, component: KanbanComponent},
     {path: "settings", data: { breadcrumb: "Settings"}, component: SettingsComponent}
