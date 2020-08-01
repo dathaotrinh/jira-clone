@@ -8,7 +8,7 @@ use jira_clone;
 drop table if exists project;
 
 create table project (
-	  project_id varchar(100) not null,
+	project_id int auto_increment not null,
     project_title text not null,
     project_key varchar(100) not null,
     project_image varchar(100),
@@ -22,7 +22,7 @@ create table project (
 drop table if exists person;
 
 create table person (
-		person_id varchar(100) not null,
+		person_id int auto_increment not null,
 		first_name varchar(100) not null,
 		last_name varchar(100) not null,
 		image_url varchar(100),
@@ -32,8 +32,8 @@ create table person (
 drop table if exists project_person;
 
 create table project_person (
-		person_id varchar(100)  not null,
-		project_id varchar(100)  not null,
+		person_id int not null,
+		project_id int  not null,
 		role bool not null,  -- f is assignee t is lead
         primary key project_person(person_id, project_id),
         constraint fk_person_project foreign key (person_id)
@@ -45,11 +45,11 @@ create table project_person (
 drop table if exists auth;
 
 create table auth (
-	auth_id varchar(100) not null,
+	auth_id int not null,
 	username varchar(100) not null,
 	password varchar(100) not null,
 	email varchar(100) not null,
-	fk_person_id varchar(100) not null,
+	fk_person_id int not null,
 	primary key auth(auth_id),
 	constraint fk_person foreign key (fk_person_id)
 	references person(person_id)
@@ -79,7 +79,7 @@ create table status (
     backlog bool not null,
     selected bool not null,
     inprogress bool not null,
-		done bool not null,
+	done bool not null,
     primary key status(status_id)
 );
 
@@ -100,7 +100,7 @@ create table task_status (
 drop table if exists type;
 
 create table type (
-  	type_id int auto_increment not null,
+  	type_id int auto_increment not null, 
     story bool not null,
     bug bool not null,
     epic bool not null,
@@ -151,7 +151,7 @@ create table task_priority (
 drop table if exists project_task;
 
 create table project_task (
-	project_id varchar(100) not null,
+	project_id int not null,
     task_id int not null,
     primary key project_task(project_id, task_id),
     constraint fk_project_task foreign key (project_id)
@@ -164,7 +164,7 @@ drop table if exists task_person;
 
 create table task_person (
 		task_id int not null,
-		person_id varchar(100) not null,
+		person_id int not null,
 		primary key task_person(task_id, person_id),
 		constraint fk_task_person foreign key (task_id)
 		references task(task_id),
@@ -188,7 +188,7 @@ create table comment (
 drop table if exists comment_person;
 
 create table comment_person (
-		person_id varchar(100) not null,
+		person_id int not null,
 		comment_id int auto_increment not null,
 		primary key comment_person(comment_id, person_id),
 		constraint fk_comment_person foreign key (comment_id)
