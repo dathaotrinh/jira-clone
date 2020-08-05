@@ -10,7 +10,7 @@
   <div class="row mx-2">
     <div class="column mr-3">
 
-      <div cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog"
+      <div style="max-width: 250px;" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog"
         [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
         <div>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="column mr-3">
-      <div cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected"
+      <div style="max-width: 250px;" cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected"
         [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
         <div>
@@ -47,7 +47,7 @@
 
     </div>
     <div class="column mr-3">
-      <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
+      <div style="max-width: 250px;" cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
         [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
 
         <div>
@@ -67,7 +67,7 @@
 
 
     <div class="column mr-3">
-      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+      <div style="max-width: 250px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
         [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
         <div>
 

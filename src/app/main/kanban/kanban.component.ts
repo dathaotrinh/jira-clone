@@ -9,37 +9,26 @@ import { MainService } from 'src/app/shared/main.service';
 })
 export class KanbanComponent implements OnInit {
 
-  backlog = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
+  backlog = [];
 
-  selected = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
+  selected = [];
 
-  inprogress = [
-    'Create kanban board',
-    'Make kanban responsive',
-    'Drag and Drop'
-  ]
+  inprogress = [];
 
-  done = [
-    'Find a free admin template'
-  ]
+  done = [];
 
   constructor(private mainS:MainService) { }
 
   ngOnInit(): void {
     this.mainS.getIssues().subscribe(data => {
-      let filer = data.filter(ele => ele.id === 2)
-      console.log(filer);
+      let selected = data.filter(ele => ele.issueStatus==="selected");
+      selected.forEach(ele => this.selected.push(ele.title))
+      let backlog = data.filter(ele => ele.issueStatus==="backlog");
+      backlog.forEach(ele => this.backlog.push(ele.title))
+      let inprogress = data.filter(ele => ele.issueStatus==="inprogress");
+      inprogress.forEach(ele => this.inprogress.push(ele.title))
+      let done = data.filter(ele => ele.issueStatus==="done");
+      done.forEach(ele => this.done.push(ele.title))
     })
   }
 
