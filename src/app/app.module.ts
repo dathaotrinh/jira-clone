@@ -11,9 +11,11 @@ import { MainComponent } from './main/main.component';
 import { KanbanComponent } from './main/kanban/kanban.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './main/login/login.component';
 
 // Services
 import { MainService } from './shared/main.service';
+import { ModalService } from './shared/modal.service';
 
 // Angular Materials
 import {MatListModule} from '@angular/material/list';
@@ -35,11 +37,13 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 // breadcrumb
 import {BreadcrumbModule} from 'angular-crumbs';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-import { LoginComponent } from './main/login/login.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { ModalComponent } from './main/kanban/modal/modal.component';
 
 registerLocaleData(en);
 
@@ -60,7 +64,8 @@ const routes: Routes = [
     KanbanComponent,
     SettingsComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -81,9 +86,11 @@ const routes: Routes = [
     NzBreadCrumbModule,
     BreadcrumbModule,
     NzAvatarModule,
+    NzModalModule,
+    NzIconModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [MainService, { provide: NZ_I18N, useValue: en_US }],
+  providers: [MainService, ModalService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,13 +9,16 @@ import { MainService } from 'src/app/shared/main.service';
 })
 export class KanbanComponent implements OnInit {
 
+  isVisible = false;
+
   backlog = [];
-
   selected = [];
-
   inprogress = [];
-
   done = [];
+
+  title = "";
+  description = "";
+  type = "";
 
   constructor(private mainS:MainService) { }
 
@@ -43,4 +46,25 @@ export class KanbanComponent implements OnInit {
     }
   }
 
+
+  showModal(i: number, array: string[] ): void {
+    this.mainS.getIssues().subscribe(data => {
+      let temp = data.filter(ele => ele.title===array[i]);
+      this.type = temp[0].issueType.toUpperCase() + "-" + temp[0].id;
+      this.title = temp[0].title;
+      this.description = temp[0].description;
+      this.isVisible = true;
+    });
+
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
 }

@@ -23,4 +23,5 @@ export class MainService {
   getIssues(): Observable<Issue[]> {
     return this.http.get<Issue[]>(this.issueUrl);
   }
+
 }

@@ -18,7 +18,7 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of backlog" cdkDrag>
+          <div class="item-box" *ngFor="let item of backlog; let i=index" cdkDrag (click)="showModal(i, backlog)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
             <div *ngIf="backlog.length === 0"></div>
@@ -36,7 +36,7 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of selected" cdkDrag>
+          <div class="item-box" *ngFor="let item of selected; let i=index;" cdkDrag (click)="showModal(i, selected)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
           </div>
@@ -55,7 +55,7 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of inprogress" cdkDrag>
+          <div class="item-box" *ngFor="let item of inprogress; let i=index;" cdkDrag (click)="showModal(i, inprogress)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
           </div>
@@ -68,14 +68,14 @@
 
     <div class="column mr-3">
       <div style="max-width: 250px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-        [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
+        [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)" >
         <div>
 
           <div class="h6 text-center my-4">Done {{done.length}}</div>
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of done" cdkDrag>
+          <div class="item-box" *ngFor="let item of done; let i=index;" cdkDrag (click)="showModal(i, done)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
           </div>
@@ -87,3 +87,19 @@
 
   </div>
 <!-- </div> -->
+
+
+<nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="null" [nzWidth]="900">
+  <div class="row">
+    <div class="col-6">{{type}}</div>
+    <div class="col-2">Give feedback</div>
+    <div class="col-2"><i nz-icon nzType="share-alt" nzTheme="outline"></i></div>
+    <div class="col-2"><i nz-icon nzType="more" nzTheme="outline"></i></div>
+
+  </div>
+
+  <h1>{{title}}</h1>
+  <p>Description</p>
+  <p>{{description}}</p>
+
+</nz-modal>
