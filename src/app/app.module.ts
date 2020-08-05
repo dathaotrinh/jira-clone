@@ -38,11 +38,11 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
 // breadcrumb
 import {BreadcrumbModule} from 'angular-crumbs';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-import { NzModalModule } from 'ng-zorro-antd/modal';
 import { ModalComponent } from './main/kanban/modal/modal.component';
 
 registerLocaleData(en);

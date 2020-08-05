@@ -10,6 +10,7 @@ import { MainService } from 'src/app/shared/main.service';
 export class KanbanComponent implements OnInit {
 
   isVisible = false;
+  selectedStatus = null;
 
   backlog = [];
   selected = [];
@@ -54,6 +55,7 @@ export class KanbanComponent implements OnInit {
       this.title = temp[0].title;
       this.description = temp[0].description;
       this.isVisible = true;
+      this.selectedStatus = temp[0].issueStatus;
     });
 
   }

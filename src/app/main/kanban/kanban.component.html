@@ -89,17 +89,35 @@
 <!-- </div> -->
 
 
-<nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="null" [nzWidth]="900">
-  <div class="row">
-    <div class="col-6">{{type}}</div>
-    <div class="col-2">Give feedback</div>
-    <div class="col-2"><i nz-icon nzType="share-alt" nzTheme="outline"></i></div>
-    <div class="col-2"><i nz-icon nzType="more" nzTheme="outline"></i></div>
-
+<nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="null" [nzWidth]="900" [nzClosable]="false">
+  <div class="row mb-4">
+    <div class="col-7">{{type}}</div>
+    <div class="col-1"><mat-icon>visibility</mat-icon></div>
+    <div class="col-1"> <mat-icon>feedback</mat-icon></div>
+    <div class="col-1"><mat-icon>share</mat-icon></div>
+    <div class="col-1"><mat-icon>more_horiz</mat-icon></div>
+    <div class="col-1"><mat-icon>close</mat-icon></div>
   </div>
 
-  <h1>{{title}}</h1>
-  <p>Description</p>
-  <p>{{description}}</p>
+  <div class="row">
+    <div class="col-8">
+      <h1>{{title}}</h1>
+      <p style="font-weight: bold;">Description</p>
+      <p>{{description}}</p>
+      <p style="font-weight: bold;">Comment</p>
+
+    </div>
+    <div class="col-4">
+      <p style="font-weight: bold;">STATUS</p>
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
+        <nz-option nzCustomContent nzLabel="DONE" nzValue="done">DONE</nz-option>
+        <nz-option nzCustomContent nzLabel="SELECTED FOR DEVELOPMENT" nzValue="selected">SELECTED FOR DEVELOPMENT</nz-option>
+        <nz-option nzCustomContent nzLabel="IN PROGRESS" nzValue="inprogress">IN PROGRESS </nz-option>
+        <nz-option nzCustomContent nzLabel="BACKLOG" nzValue="backlog">BACKLOG</nz-option>
+
+      </nz-select>
+    </div>
+  </div>
+
 
 </nz-modal>
