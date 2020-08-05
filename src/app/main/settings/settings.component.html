@@ -3,21 +3,13 @@
 </div>
 
 <div class="div">
-  <form class="mt-5" style="min-width: 600px; margin-left: 20rem;" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <form class="mt-5" style="min-width: 600px; margin-left: 15rem;" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
 
     <!-- Name -->
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The name is already in used!">
-        <input nz-input formControlName="name" id="name" />
-      </nz-form-control>
-    </nz-form-item>
-
-    <!-- Key -->
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="key" nzRequired>Key</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The key is already in used!">
-        <input nz-input type="text" id="key" formControlName="key" />
+        <input nz-input formControlName="name" id="name" [(ngModel)]="name" />
       </nz-form-control>
     </nz-form-item>
 
@@ -25,7 +17,7 @@
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="url">URL</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
-        <input nz-input id="url" formControlName="url"/>
+        <input nz-input id="url" formControlName="url" [(ngModel)]="url"/>
       </nz-form-control>
     </nz-form-item>
 
@@ -33,26 +25,9 @@
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description">Description</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
-          <input nz-input type="text" id="description" formControlName="description" />
+          <input nz-input type="text" id="description" formControlName="description" [(ngModel)]="description" />
         </nz-form-control>
       </nz-form-item>
-
-
-    <!-- Captcha -->
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha" nzRequired>Captcha</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the captcha you got!"
-        nzExtra="We must make sure that your are a human.">
-        <div nz-row [nzGutter]="8">
-          <div nz-col [nzSpan]="12">
-            <input nz-input formControlName="captcha" id="captcha" />
-          </div>
-          <div nz-col [nzSpan]="12">
-            <button nz-button (click)="getCaptcha($event)">Get captcha</button>
-          </div>
-        </div>
-      </nz-form-control>
-    </nz-form-item>
 
 
     <nz-form-item nz-row class="save-area">

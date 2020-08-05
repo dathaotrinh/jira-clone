@@ -1,13 +1,14 @@
 
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div id="menu-toggle" (click)="onToggle()"><mat-icon>arrow_back</mat-icon>
-    </div>
+    <!-- <div id="menu-toggle" (click)="onToggle()"><mat-icon>arrow_back</mat-icon>
+    </div> -->
 
-    <breadcrumb #parent style="width: 400px;">
+    <breadcrumb #parent style="width: 400px;" class="ml-4">
       <ol class="breadcrumb mt-3 ml-4" style="background-color: white; font-size: 16px;;">
         <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
           <li *ngIf="!route.terminal" class="breadcrumb-item">
-            <a href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+            <!--  href="" [routerLink]="[route.url]" -->
+            <a>{{ route.displayName }}</a>
           </li>
           <li *ngIf="route.terminal" class="breadcrumb-item active" aria-current="page">{{ route.displayName }}</li>
         </ng-template>

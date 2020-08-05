@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { MainService } from 'src/app/shared/main.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,6 +11,9 @@ export class SettingsComponent implements OnInit {
 
   validateForm!: FormGroup;
 
+  name = "";
+  description = "";
+  url = "";
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
@@ -31,20 +35,20 @@ export class SettingsComponent implements OnInit {
     return {};
   };
 
-  getCaptcha(e: MouseEvent): void {
-    e.preventDefault();
-  }
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private mainS: MainService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
-      key: [null, [Validators.required]],
       url: [null],
       description: [null],
-      captcha: [null, [Validators.required]],
     });
+
+    this.mainS.getProjectInfo().subscribe(data => {
+      this.name = data[0].name;
+      this.url = data[0].url;
+      this.description = data[0].description
+    })
   }
 
 }
