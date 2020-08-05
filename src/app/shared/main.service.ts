@@ -3,6 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Project } from 'src/app/shared/project.interface';
 import { Issue } from 'src/app/shared/issue.interface';
+import { User } from 'src/app/shared/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,23 @@ import { Issue } from 'src/app/shared/issue.interface';
 export class MainService {
   toggleChanged = new Subject<boolean>();
 
-  projectUrl = "http://localhost:8080/api/projects/get";
+  projectsUrl = "http://localhost:8080/api/projects/get";
 
-  issueUrl = "http://localhost:8080/api/issues/get";
+  issuesUrl = "http://localhost:8080/api/issues/get";
+
+  userUrl = "http://localhost:8080/api/users/get/";
 
   constructor(private http: HttpClient) { }
 
   getProjectInfo(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.projectUrl);
+    return this.http.get<Project[]>(this.projectsUrl);
   }
 
   getIssues(): Observable<Issue[]> {
-    return this.http.get<Issue[]>(this.issueUrl);
+    return this.http.get<Issue[]>(this.issuesUrl);
   }
 
+  getUsers(): Observable<User> {
+    return this.http.get<User>(this.userUrl);
+  }
 }

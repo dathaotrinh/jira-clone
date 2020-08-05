@@ -58,6 +58,7 @@ export class KanbanComponent implements OnInit {
       this.selectedStatus = temp[0].issueStatus;
     });
 
+    this.mainS
   }
 
   handleOk(): void {

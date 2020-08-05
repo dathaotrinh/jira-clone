@@ -108,14 +108,17 @@
 
     </div>
     <div class="col-4">
-      <p style="font-weight: bold;">STATUS</p>
+      <p style="font-weight: bold;">Status</p>
       <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
-        <nz-option nzCustomContent nzLabel="DONE" nzValue="done">DONE</nz-option>
-        <nz-option nzCustomContent nzLabel="SELECTED FOR DEVELOPMENT" nzValue="selected">SELECTED FOR DEVELOPMENT</nz-option>
-        <nz-option nzCustomContent nzLabel="IN PROGRESS" nzValue="inprogress">IN PROGRESS </nz-option>
-        <nz-option nzCustomContent nzLabel="BACKLOG" nzValue="backlog">BACKLOG</nz-option>
-
+        <nz-option nzCustomContent nzLabel="Done" nzValue="done">Done</nz-option>
+        <nz-option nzCustomContent nzLabel="Selected For Development" nzValue="selected">Selected For Development</nz-option>
+        <nz-option nzCustomContent nzLabel="In Progress" nzValue="inprogress">In Progress</nz-option>
+        <nz-option nzCustomContent nzLabel="Backlog" nzValue="backlog">Backlog</nz-option>
       </nz-select>
+
+      <p class="mt-3" style="font-weight: bold;">Reporter</p>
+      <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+
     </div>
   </div>
 
