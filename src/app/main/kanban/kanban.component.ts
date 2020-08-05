@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { transferArrayItem, moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { MainService } from 'src/app/shared/main.service';
 
 @Component({
   selector: 'app-kanban',
@@ -33,9 +34,13 @@ export class KanbanComponent implements OnInit {
     'Find a free admin template'
   ]
 
-  constructor() { }
+  constructor(private mainS:MainService) { }
 
   ngOnInit(): void {
+    this.mainS.getIssues().subscribe(data => {
+      let filer = data.filter(ele => ele.id === 2)
+      console.log(filer);
+    })
   }
 
   drop(event: CdkDragDrop<string[]>) {
