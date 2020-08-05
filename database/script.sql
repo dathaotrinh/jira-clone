@@ -11,7 +11,7 @@ create table project (
 	project_id int auto_increment not null,
     project_title text not null,
     project_key varchar(100) not null,
-    project_image varchar(100),
+    project_url varchar(100),
     created_date timestamp not null,
     primary key project(project_id)
 );

@@ -18,6 +18,7 @@ export class MainComponent implements OnInit {
   onToggle() {
     this.opened = !this.opened;
     this.mainS.toggleChanged.next(this.opened);
+
   }
 
 }

@@ -19,5 +19,9 @@ export class NavbarComponent implements OnInit {
   onToggle() {
     this.opened = !this.opened;
     this.mainS.toggleChanged.next(this.opened);
+    this.mainS.getProjectInfo().subscribe(res => {
+      console.log("here");
+      console.log(res[0])
+    });
   }
 }
