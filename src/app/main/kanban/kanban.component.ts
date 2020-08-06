@@ -9,6 +9,8 @@ import { MainService } from 'src/app/shared/main.service';
 })
 export class KanbanComponent implements OnInit {
 
+  aloha =" string string";
+  onDescription = false;
   isVisible = false;
   selectedStatus = null;
 
@@ -37,6 +39,12 @@ export class KanbanComponent implements OnInit {
       done.forEach(ele => this.done.push(ele.title))
     })
   }
+
+  editorStyle = {
+    height: '200px'
+  };
+
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -86,4 +94,9 @@ export class KanbanComponent implements OnInit {
     else if(priorityType === 'Lowest') return "lightgreen";
 
   }
+
+  onDescriptionChanged() {
+    this.onDescription = !this.onDescription;
+  }
+
 }

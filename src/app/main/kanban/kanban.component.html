@@ -103,7 +103,13 @@
     <div class="col-8">
       <h1>{{title}}</h1>
       <p style="font-weight: bold;">Description</p>
-      <p>{{description}}</p>
+      <p (click)="onDescriptionChanged()" *ngIf="!onDescription">{{description}}</p>
+      <div id="quill" *ngIf="onDescription">
+        <quill-editor [styles]="editorStyle" [(ngModel)]="description">
+        </quill-editor>
+      </div>
+
+
       <p style="font-weight: bold;">Comment</p>
 
     </div>
@@ -141,3 +147,5 @@
 
 
 </nz-modal>
+
+

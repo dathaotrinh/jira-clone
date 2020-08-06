@@ -45,6 +45,10 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { ModalComponent } from './main/kanban/modal/modal.component';
 
+
+//quill
+import { QuillModule } from 'ngx-quill'
+
 registerLocaleData(en);
 
 const routes: Routes = [
@@ -88,6 +92,8 @@ const routes: Routes = [
     NzAvatarModule,
     NzModalModule,
     NzIconModule,
+    QuillModule,
+    QuillModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [MainService, ModalService, { provide: NZ_I18N, useValue: en_US }],
