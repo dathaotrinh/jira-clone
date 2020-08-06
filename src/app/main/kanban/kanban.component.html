@@ -117,8 +117,25 @@
       </nz-select>
 
       <p class="mt-3" style="font-weight: bold;">Reporter</p>
-      <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+      <nz-avatar nzIcon="user" nzSrc="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/10885614_638674292911320_715049263198183572_n.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=krm3i0fljJcAX-nJjD0&_nc_ht=scontent-lga3-1.xx&oh=1aad88c21e0e7113efbaffea8904db71&oe=5F4EE2FD"></nz-avatar>
+      <span> {{reporterName}}</span>
 
+      <p class="mt-3" style="font-weight: bold;">Assignee</p>
+      <nz-avatar nzIcon="user" nzSrc="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/10885614_638674292911320_715049263198183572_n.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=krm3i0fljJcAX-nJjD0&_nc_ht=scontent-lga3-1.xx&oh=1aad88c21e0e7113efbaffea8904db71&oe=5F4EE2FD"></nz-avatar>
+      <span> {{reporterName}}</span>
+
+      <p class="mt-3" style="font-weight: bold;">Priority</p>
+
+        <div>
+          <mat-icon [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon><span class="aligned-with-icon">{{priority}}</span>
+        </div>
+
+
+        <p class="mt-3" style="font-weight: bold;">Original Estimate</p>
+
+        <div>
+
+        </div>
     </div>
   </div>
 

@@ -27,7 +27,7 @@ export class MainService {
     return this.http.get<Issue[]>(this.issuesUrl);
   }
 
-  getUsers(): Observable<User> {
-    return this.http.get<User>(this.userUrl);
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(this.userUrl + id);
   }
 }

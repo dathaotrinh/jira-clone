@@ -20,6 +20,8 @@ export class KanbanComponent implements OnInit {
   title = "";
   description = "";
   type = "";
+  reporterName = "";
+  priority = "";
 
   constructor(private mainS:MainService) { }
 
@@ -56,9 +58,13 @@ export class KanbanComponent implements OnInit {
       this.description = temp[0].description;
       this.isVisible = true;
       this.selectedStatus = temp[0].issueStatus;
+      this.priority = temp[0].issuePriority.charAt(0).toUpperCase() + temp[0].issuePriority.substring(1, temp[0].issuePriority.length);
+      this.mainS.getUser(temp[0].reporterid).subscribe(user => {
+        this.reporterName = user.name;
+      })
+
     });
 
-    this.mainS
   }
 
   handleOk(): void {
@@ -69,5 +75,15 @@ export class KanbanComponent implements OnInit {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  priorityColor(priorityType: string): string {
+    if(priorityType === 'Medium') return "orange";
+    else if(priorityType === 'Highest') return "red";
+    else if(priorityType === 'High') return "#F06666";
+
+    else if(priorityType === 'Low') return "green";
+    else if(priorityType === 'Lowest') return "lightgreen";
+
   }
 }

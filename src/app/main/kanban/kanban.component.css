@@ -38,3 +38,11 @@
 nz-select {
   width: 250px;
 }
+
+
+
+.aligned-with-icon{
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px; /* optional */
+}
