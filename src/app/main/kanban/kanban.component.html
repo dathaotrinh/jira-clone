@@ -18,13 +18,14 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of backlog; let i=index" cdkDrag (click)="showModal(i, backlog)">
+          <!-- <div class="item-box" *ngFor="let item of backlog; let i=index" cdkDrag (click)="showModal(i, backlog)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             <div>{{item}}</div>
-            <!-- <div [ngStyle]="{'color': priorityColor(priority)}"><mat-icon>arrow_upward</mat-icon></div> -->
 
-            <div *ngIf="backlog.length === 0"></div>
-          </div>
+            <div *ngIf="backlog.length === 0"></div> -->
+
+            <app-item-box [list]="backlog"></app-item-box>
+
         </div>
 
       </div>
@@ -38,11 +39,14 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of selected; let i=index;" cdkDrag (click)="showModal(i, selected)">
+          <!-- <div class="item-box" *ngFor="let item of selected; let i=index;" cdkDrag (click)="showModal(i, selected)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
           </div>
-          <div *ngIf="selected.length === 0"></div>
+          <div *ngIf="selected.length === 0"></div> -->
+
+          <app-item-box [list]="selected"></app-item-box>
+
         </div>
 
       </div>
@@ -57,11 +61,14 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of inprogress; let i=index;" cdkDrag (click)="showModal(i, inprogress)">
+
+          <app-item-box [list]="inprogress"></app-item-box>
+
+          <!-- <div class="item-box" *ngFor="let item of inprogress; let i=index;" cdkDrag (click)="showModal(i, inprogress)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
           </div>
-          <div *ngIf="inprogress.length === 0"></div>
+          <div *ngIf="inprogress.length === 0"></div> -->
         </div>
       </div>
     </div>
@@ -75,11 +82,12 @@
         </div>
 
         <div>
-          <div class="item-box" *ngFor="let item of done; let i=index;" cdkDrag (click)="showModal(i, done)">
+          <app-item-box [list]="done"></app-item-box>
+          <!-- <div class="item-box" *ngFor="let item of done; let i=index;" cdkDrag (click)="showModal(i, done)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
             {{item}}
           </div>
-          <div *ngIf="done.length === 0"></div>
+          <div *ngIf="done.length === 0"></div> -->
         </div>
 
       </div>

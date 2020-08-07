@@ -45,7 +45,6 @@ import { NzListModule } from 'ng-zorro-antd/list';
 
 // breadcrumb
 import {BreadcrumbModule} from 'angular-crumbs';
-import { ModalComponent } from './main/kanban/modal/modal.component';
 
 
 //quill
@@ -72,7 +71,6 @@ const routes: Routes = [
     SettingsComponent,
     NavbarComponent,
     LoginComponent,
-    ModalComponent,
     ItemBoxComponent
   ],
   imports: [
