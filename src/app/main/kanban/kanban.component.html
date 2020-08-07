@@ -61,7 +61,6 @@
           </div>
           <div *ngIf="inprogress.length === 0"></div>
         </div>
-
       </div>
     </div>
 
@@ -70,7 +69,6 @@
       <div style="max-width: 250px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
         [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)" >
         <div>
-
           <div class="h6 text-center my-4">Done {{done.length}}</div>
         </div>
 
@@ -107,6 +105,9 @@
       <div id="quill" *ngIf="onDescription">
         <quill-editor [styles]="editorStyle" [(ngModel)]="description">
         </quill-editor>
+        <button class="my-3" nz-button nzType="primary" style="background-color: #0847A6; border-color: #0847A6;">Save</button>
+        <button nz-button nzType="default" style="border-color: white;">Cancel</button>
+
       </div>
 
 
