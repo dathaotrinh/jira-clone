@@ -57,10 +57,10 @@ export class ItemBoxComponent implements OnInit {
         this.reporterName = user.name;
         this.avatar = user.avatarUrl;
 
-        // this.user = {
-        //   author: this.reporterName,
-        //   avatar: this.avatar
-        // };
+        this.user = {
+          author: this.reporterName,
+          avatar: this.avatar
+        };
       });
     });
   }
