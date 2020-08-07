@@ -40,6 +40,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzCommentModule } from 'ng-zorro-antd/comment';
+import { NzListModule } from 'ng-zorro-antd/list';
 
 // breadcrumb
 import {BreadcrumbModule} from 'angular-crumbs';
@@ -93,6 +95,8 @@ const routes: Routes = [
     NzModalModule,
     NzIconModule,
     QuillModule,
+    NzCommentModule,
+    NzListModule,
     QuillModule.forRoot(),
     RouterModule.forRoot(routes)
   ],

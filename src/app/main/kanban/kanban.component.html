@@ -20,7 +20,9 @@
         <div>
           <div class="item-box" *ngFor="let item of backlog; let i=index" cdkDrag (click)="showModal(i, backlog)">
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-            {{item}}
+            <div>{{item}}</div>
+            <!-- <div [ngStyle]="{'color': priorityColor(priority)}"><mat-icon>arrow_upward</mat-icon></div> -->
+
             <div *ngIf="backlog.length === 0"></div>
           </div>
         </div>
@@ -113,7 +115,37 @@
 
       <p style="font-weight: bold;">Comment</p>
 
+      <nz-list *ngIf="data.length" [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+        <ng-template #item let-item>
+          <nz-comment [nzAuthor]="item.author" [nzDatetime]="item.displayTime">
+            <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.avatar"></nz-avatar>
+            <nz-comment-content>
+              <p>{{ item.content }}</p>
+            </nz-comment-content>
+          </nz-comment>
+        </ng-template>
+      </nz-list>
+      <nz-comment>
+        <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
+        <nz-comment-content>
+          <nz-form-item>
+            <textarea [(ngModel)]="inputValue" nz-input rows="2"></textarea>
+          </nz-form-item>
+
+          <nz-form-item>
+            <button nz-button nzType="primary"  [nzLoading]="submitting" [disabled]="!inputValue" (click)="handleSubmit();"style="background-color: #0847A6; border-color: #0847A6; color: white;">Save</button>
+            <button nz-button nzType="default" style="border-color: white;">Cancel</button>
+          </nz-form-item>
+
+        </nz-comment-content>
+      </nz-comment>
+
+
     </div>
+
+
+
+
     <div class="col-4">
       <p style="font-weight: bold;">Status</p>
       <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
@@ -124,11 +156,11 @@
       </nz-select>
 
       <p class="mt-3" style="font-weight: bold;">Reporter</p>
-      <nz-avatar nzIcon="user" nzSrc="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/10885614_638674292911320_715049263198183572_n.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=krm3i0fljJcAX-nJjD0&_nc_ht=scontent-lga3-1.xx&oh=1aad88c21e0e7113efbaffea8904db71&oe=5F4EE2FD"></nz-avatar>
+      <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
       <span> {{reporterName}}</span>
 
       <p class="mt-3" style="font-weight: bold;">Assignee</p>
-      <nz-avatar nzIcon="user" nzSrc="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/10885614_638674292911320_715049263198183572_n.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=krm3i0fljJcAX-nJjD0&_nc_ht=scontent-lga3-1.xx&oh=1aad88c21e0e7113efbaffea8904db71&oe=5F4EE2FD"></nz-avatar>
+      <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
       <span> {{reporterName}}</span>
 
       <p class="mt-3" style="font-weight: bold;">Priority</p>

@@ -26,6 +26,12 @@ export class KanbanComponent implements OnInit {
   type = '';
   reporterName = '';
   priority = '';
+  avatar = "";
+
+  user = {
+    author: "",
+    avatar: ""
+  };
 
   constructor(private mainS: MainService) {}
 
@@ -39,6 +45,8 @@ export class KanbanComponent implements OnInit {
       inprogress.forEach((ele) => this.inprogress.push(ele.title));
       let done = data.filter((ele) => ele.issueStatus === 'done');
       done.forEach((ele) => this.done.push(ele.title));
+
+
     });
   }
 
@@ -65,17 +73,31 @@ export class KanbanComponent implements OnInit {
 
   showModal(i: number, array: string[]): void {
     this.mainS.getIssues().subscribe((data) => {
+
       let temp = data.filter((ele) => ele.title === array[i]);
+
       this.type = temp[0].issueType.toUpperCase() + '-' + temp[0].id;
+
       this.title = temp[0].title;
+
       this.description = temp[0].description;
+
       this.isVisible = true;
+
       this.selectedStatus = temp[0].issueStatus;
+
       this.priority =
         temp[0].issuePriority.charAt(0).toUpperCase() +
         temp[0].issuePriority.substring(1, temp[0].issuePriority.length);
+
       this.mainS.getUser(temp[0].reporterid).subscribe((user) => {
         this.reporterName = user.name;
+        this.avatar = user.avatarUrl;
+
+        this.user = {
+          author: this.reporterName,
+          avatar: this.avatar
+        };
       });
     });
   }
@@ -99,5 +121,33 @@ export class KanbanComponent implements OnInit {
 
   onDescriptionChanged() {
     this.onDescription = !this.onDescription;
+  }
+
+  data: any[] = [];
+  submitting = false;
+
+  inputValue = '';
+
+  handleSubmit(): void {
+    this.submitting = true;
+    const content = this.inputValue;
+    this.inputValue = '';
+    setTimeout(() => {
+      this.submitting = false;
+      this.data = [
+        ...this.data,
+        {
+          ...this.user,
+          content,
+          datetime: new Date(),
+          displayTime: new Date()
+        }
+      ].map(e => {
+        return {
+          ...e,
+          displayTime: e.datetime
+        };
+      });
+    }, 200);
   }
 }
