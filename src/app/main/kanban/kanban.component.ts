@@ -33,6 +33,10 @@ export class KanbanComponent implements OnInit {
     avatar: ""
   };
 
+  editorStyle = {
+    height: '100px'
+  };
+
   constructor(private mainS: MainService) {}
 
   ngOnInit(): void {
@@ -50,9 +54,7 @@ export class KanbanComponent implements OnInit {
     });
   }
 
-  editorStyle = {
-    height: '200px',
-  };
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -127,6 +129,7 @@ export class KanbanComponent implements OnInit {
   submitting = false;
 
   inputValue = '';
+
 
   handleSubmit(): void {
     this.submitting = true;

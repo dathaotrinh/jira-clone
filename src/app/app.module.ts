@@ -49,7 +49,8 @@ import { ModalComponent } from './main/kanban/modal/modal.component';
 
 
 //quill
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { ItemBoxComponent } from './main/kanban/item-box/item-box.component'
 
 registerLocaleData(en);
 
@@ -71,7 +72,8 @@ const routes: Routes = [
     SettingsComponent,
     NavbarComponent,
     LoginComponent,
-    ModalComponent
+    ModalComponent,
+    ItemBoxComponent
   ],
   imports: [
     BrowserModule,

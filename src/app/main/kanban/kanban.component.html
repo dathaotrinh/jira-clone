@@ -103,9 +103,12 @@
     <div class="col-8">
       <h1>{{title}}</h1>
       <p style="font-weight: bold;">Description</p>
+
+
+
       <p (click)="onDescriptionChanged()" *ngIf="!onDescription">{{description}}</p>
       <div id="quill" *ngIf="onDescription">
-        <quill-editor [styles]="editorStyle" [(ngModel)]="description">
+        <quill-editor [styles]="editorStyle"  [(ngModel)]="description">
         </quill-editor>
         <button class="my-3" nz-button nzType="primary" style="background-color: #0847A6; border-color: #0847A6;">Save</button>
         <button nz-button nzType="default" style="border-color: white;">Cancel</button>
