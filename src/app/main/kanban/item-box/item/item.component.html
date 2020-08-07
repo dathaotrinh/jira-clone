@@ -24,7 +24,7 @@
 
       <p (click)="onDescriptionChanged()" *ngIf="!onDescription">{{description}}</p>
       <div id="quill" *ngIf="onDescription">
-        <quill-editor [styles]="editorStyle"  [(ngModel)]="description">
+        <quill-editor [(ngModel)]="description">
         </quill-editor>
         <button class="my-3" nz-button nzType="primary" style="background-color: #0847A6; border-color: #0847A6;">Save</button>
         <button nz-button nzType="default" style="border-color: white;">Cancel</button>
@@ -67,7 +67,7 @@
 
     <div class="col-4">
       <p style="font-weight: bold;">Status</p>
-      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
+      <nz-select style="width: 240px;" nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
         <nz-option nzCustomContent nzLabel="Done" nzValue="done">Done</nz-option>
         <nz-option nzCustomContent nzLabel="Selected For Development" nzValue="selected">Selected For Development</nz-option>
         <nz-option nzCustomContent nzLabel="In Progress" nzValue="inprogress">In Progress</nz-option>

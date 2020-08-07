@@ -11,12 +11,9 @@ export class ItemBoxComponent implements OnInit {
   @Input() list = [];
 
 
-  constructor(private mainS: MainService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
-
-
 
 }

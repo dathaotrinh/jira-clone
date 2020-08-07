@@ -26,9 +26,6 @@ export class ItemComponent implements OnInit {
     avatar: ""
   };
 
-  editorStyle = {
-    height: '100px'
-  };
 
   constructor(private mainS: MainService) { }
 
