@@ -2,13 +2,13 @@
 <mat-sidenav-container id="sidebar-wrapper">
   <mat-sidenav id="outer-container" mode="side" opened>
     <div class="side-icon mt-4 text-center">
-      <mat-icon>grade</mat-icon>
+      <mat-icon class="side-icon">grade</mat-icon>
     </div>
     <div class="side-icon mt-4 text-center">
-      <mat-icon>search</mat-icon>
+      <mat-icon class="side-icon">search</mat-icon>
     </div>
-    <div class="side-icon  mt-4 text-center">
-      <mat-icon>add</mat-icon>
+    <div class="side-icon mt-4 text-center">
+      <mat-icon class="side-icon">add</mat-icon>
     </div>
 
     <div class="side-icon text-center" style="margin-top: 30rem;" routerLink="/login">
@@ -20,30 +20,36 @@
   <mat-sidenav-content>
     <!-- inner sidenav -->
     <!-- *ngIf="opened" -->
-    <mat-sidenav-container id="sidebar-wrapper" >
+    <mat-sidenav-container id="sidebar-wrapper">
       <mat-sidenav id="inner-container" mode="side" opened>
-        <div class="sidebar-heading text-center mt-3" style="color: black;">Jira Clone</div>
+        <div class="ml-2" style="width: 190px;">
+              <div class="text-center mt-4" style="color: black; font-size: 18px; ">{{name}}</div>
+              <!-- <div class="text-left mt-2">{{category}}</div> -->
+        </div>
+
         <hr>
         <div class="list-group list-group-flush">
-          <a routerLink="/project/kanban-board" routerLinkActive="active" class="list-group-item list-group-item-action bg-light">
+          <a routerLink="/project/kanban-board" routerLinkActive="active"
+            class="list-group-item list-group-item-action bg-light">
             <div class="ml-3">
 
-            <mat-icon>developer_board</mat-icon>
-            <span class="aligned-with-icon">Kanban Board</span>
+              <mat-icon>developer_board</mat-icon>
+              <span class="aligned-with-icon">Kanban Board</span>
             </div>
           </a>
-          <a routerLink="/project/settings" routerLinkActive="active"  class="list-group-item list-group-item-action bg-light">
+          <a routerLink="/project/settings" routerLinkActive="active"
+            class="list-group-item list-group-item-action bg-light">
             <div class="ml-3">
 
-            <mat-icon>settings</mat-icon>
-            <span class="aligned-with-icon">Project Settings</span>
+              <mat-icon>settings</mat-icon>
+              <span class="aligned-with-icon">Project Settings</span>
             </div>
           </a>
           <a href="#" class="list-group-item list-group-item-action bg-light">
             <div class="ml-3">
 
-            <mat-icon> show_chart</mat-icon>
-            <span class="aligned-with-icon">Reports</span>
+              <mat-icon> show_chart</mat-icon>
+              <span class="aligned-with-icon">Reports</span>
             </div>
           </a>
 
@@ -51,22 +57,22 @@
           <a href="#" class="list-group-item list-group-item-action bg-light">
             <div class="ml-3">
 
-            <mat-icon>launch</mat-icon>
-            <span class="aligned-with-icon">Release</span>
+              <mat-icon>launch</mat-icon>
+              <span class="aligned-with-icon">Release</span>
             </div>
 
           </a>
           <a href="#" class="list-group-item list-group-item-action bg-light">
-           <div class="ml-3">
-            <mat-icon>bug_report</mat-icon>
-            <span class="aligned-with-icon">Issues</span>
-          </div>
+            <div class="ml-3">
+              <mat-icon>bug_report</mat-icon>
+              <span class="aligned-with-icon">Issues</span>
+            </div>
           </a>
           <a href="#" class="list-group-item list-group-item-action bg-light">
             <div class="ml-3">
 
-            <mat-icon>view_list</mat-icon>
-            <span class="aligned-with-icon">Add Components</span>
+              <mat-icon>view_list</mat-icon>
+              <span class="aligned-with-icon">Add Components</span>
             </div>
           </a>
         </div>

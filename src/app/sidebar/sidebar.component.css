@@ -51,11 +51,9 @@ hr {
 
 .side-icon {
   cursor: pointer;
+  color: white;
 }
 
-.side-icon:hover {
-  border: 1px dotted white;
-}
 
 
 .aligned-with-icon{
@@ -63,3 +61,9 @@ hr {
   margin-top: 5px;
   margin-left: 5px; /* optional */
 }
+
+.active {
+  color: #0847A6;
+}
+
+

@@ -7,16 +7,15 @@ import { MainService } from '../shared/main.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  opened: boolean;
+  name = "";
+  category = "";
   constructor(private mainS: MainService) {
   }
 
   ngOnInit(): void {
-    this.mainS.toggleChanged.subscribe(req => {
-      this.opened = req
-
-      console.log(this.opened);
-
+    this.mainS.getProject().subscribe(res => {
+      this.name = res.name;
+      this.category = res.category;
     });
   }
 

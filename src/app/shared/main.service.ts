@@ -11,6 +11,11 @@ import { User } from 'src/app/shared/user.interface';
 export class MainService {
   toggleChanged = new Subject<boolean>();
 
+  pid = 1;
+
+  projectUrl = "http://localhost:8080/api/projects/get/" + this.pid;
+
+
   projectsUrl = "http://localhost:8080/api/projects/get";
 
   issuesUrl = "http://localhost:8080/api/issues/get";
@@ -21,6 +26,10 @@ export class MainService {
 
   getProjectInfo(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl);
+  }
+
+  getProject(): Observable<Project> {
+    return this.http.get<Project>(this.projectUrl);
   }
 
   getIssues(): Observable<Issue[]> {
