@@ -89,32 +89,5 @@ export class ItemComponent implements OnInit {
     this.onDescription = !this.onDescription;
   }
 
-  data: any[] = [];
-  submitting = false;
 
-  inputValue = '';
-
-
-  handleSubmit(): void {
-    this.submitting = true;
-    const content = this.inputValue;
-    this.inputValue = '';
-    setTimeout(() => {
-      this.submitting = false;
-      this.data = [
-        ...this.data,
-        {
-          ...this.user,
-          content,
-          datetime: new Date(),
-          displayTime: new Date()
-        }
-      ].map(e => {
-        return {
-          ...e,
-          displayTime: e.datetime
-        };
-      });
-    }, 200);
-  }
 }

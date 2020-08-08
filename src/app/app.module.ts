@@ -50,7 +50,8 @@ import {BreadcrumbModule} from 'angular-crumbs';
 //quill
 import { QuillModule } from 'ngx-quill';
 import { ItemBoxComponent } from './main/kanban/item-box/item-box.component';
-import { ItemComponent } from './main/kanban/item-box/item/item.component'
+import { ItemComponent } from './main/kanban/item-box/item/item.component';
+import { CommentComponent } from './main/kanban/item-box/item/comment/comment.component'
 
 registerLocaleData(en);
 
@@ -73,7 +74,8 @@ const routes: Routes = [
     NavbarComponent,
     LoginComponent,
     ItemBoxComponent,
-    ItemComponent
+    ItemComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
