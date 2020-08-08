@@ -12,6 +12,7 @@ export class ItemComponent implements OnInit {
 
   onDescription = false;
 
+  id : number;
   title = '';
   description = '';
   type = '';
@@ -37,7 +38,9 @@ export class ItemComponent implements OnInit {
 
       let temp = data.filter((ele) => ele.title === this.item);
 
-      this.type = temp[0].issueType.toUpperCase() + '-' + temp[0].id;
+      this.type = temp[0].issueType.toUpperCase();
+
+      this.id = temp[0].id;
 
       this.title = temp[0].title;
 

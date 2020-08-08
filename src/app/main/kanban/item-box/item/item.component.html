@@ -7,7 +7,13 @@
 
 <nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="null" [nzWidth]="900" [nzClosable]="false">
   <div class="row mb-4">
-    <div class="col-7">{{type}}</div>
+    <div class="col-7">
+      <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white;">check</mat-icon>
+      <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white;">turned_in_not</mat-icon>
+      <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;">lens</mat-icon>
+
+
+      <span class="aligned-with-icon">{{type}}-{{id}}</span></div>
     <div class="col-1"><mat-icon>visibility</mat-icon></div>
     <div class="col-1"> <mat-icon>feedback</mat-icon></div>
     <div class="col-1"><mat-icon>share</mat-icon></div>
