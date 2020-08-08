@@ -31,9 +31,6 @@ export class ItemComponent implements OnInit {
   constructor(private mainS: MainService) { }
 
   ngOnInit(): void {
-  }
-
-  showModal(): void {
     this.mainS.getIssues().subscribe((data) => {
 
       let temp = data.filter((ele) => ele.title === this.item);
@@ -45,8 +42,6 @@ export class ItemComponent implements OnInit {
       this.title = temp[0].title;
 
       this.description = temp[0].description;
-
-      this.isVisible = true;
 
       this.selectedStatus = temp[0].issueStatus;
 
@@ -64,6 +59,10 @@ export class ItemComponent implements OnInit {
         };
       });
     });
+  }
+
+  showModal(): void {
+    this.isVisible = true;
   }
 
 

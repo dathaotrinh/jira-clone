@@ -7,92 +7,65 @@
 </div>
 
 <!-- <div class="div ml-4" style="width: 100%; height: 100%;"> -->
-  <div class="row ml-4">
-    <div class="column mr-3">
+<div class="row ml-4">
+  <div class="column mr-3">
 
-      <div style="max-width: 250px;" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog"
-        [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
+    <div style="max-width: 250px;" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="backlog"
+      [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
-        <div>
-          <div class="h6 text-center my-4">Backlog {{backlog.length}}</div>
-        </div>
-
-        <div>
-          <!-- <div class="item-box" *ngFor="let item of backlog; let i=index" cdkDrag (click)="showModal(i, backlog)">
-            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-            <div>{{item}}</div>
-
-            <div *ngIf="backlog.length === 0"></div> -->
-
-            <app-item-box [list]="backlog"></app-item-box>
-
-        </div>
-
+      <div>
+        <div class="h6 text-center my-4">Backlog {{backlog.length}}</div>
       </div>
-    </div>
-    <div class="column mr-3">
-      <div style="max-width: 250px;" cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected"
-        [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
-        <div>
-          <div class="h6 text-center mt-2 my-4">Selected For Development {{selected.length}}</div>
-        </div>
-
-        <div>
-          <!-- <div class="item-box" *ngFor="let item of selected; let i=index;" cdkDrag (click)="showModal(i, selected)">
-            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-            {{item}}
-          </div>
-          <div *ngIf="selected.length === 0"></div> -->
-
-          <app-item-box [list]="selected"></app-item-box>
-
-        </div>
-
+      <div>
+        <app-item-box [list]="backlog"></app-item-box>
       </div>
 
     </div>
-    <div class="column mr-3">
-      <div style="max-width: 250px;" cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
-        [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
+  </div>
+  <div class="column mr-3">
+    <div style="max-width: 250px;" cdkDropList #selectedList="cdkDropList" [cdkDropListData]="selected"
+      [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
-        <div>
-          <div class="h6 text-center mt-2 my-4">In Progress {{inprogress.length}}</div>
-        </div>
-
-        <div>
-
-          <app-item-box [list]="inprogress"></app-item-box>
-
-          <!-- <div class="item-box" *ngFor="let item of inprogress; let i=index;" cdkDrag (click)="showModal(i, inprogress)">
-            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-            {{item}}
-          </div>
-          <div *ngIf="inprogress.length === 0"></div> -->
-        </div>
+      <div>
+        <div class="h6 text-center mt-2 my-4">Selected For Development {{selected.length}}</div>
       </div>
-    </div>
 
-
-    <div class="column mr-3">
-      <div style="max-width: 250px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-        [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)" >
-        <div>
-          <div class="h6 text-center my-4">Done {{done.length}}</div>
-        </div>
-
-        <div>
-          <app-item-box [list]="done"></app-item-box>
-          <!-- <div class="item-box" *ngFor="let item of done; let i=index;" cdkDrag (click)="showModal(i, done)">
-            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-            {{item}}
-          </div>
-          <div *ngIf="done.length === 0"></div> -->
-        </div>
-
+      <div>
+        <app-item-box [list]="selected"></app-item-box>
       </div>
+
     </div>
 
   </div>
-<!-- </div> -->
+  <div class="column mr-3">
+    <div style="max-width: 250px;" cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
+      [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
 
+      <div>
+        <div class="h6 text-center mt-2 my-4">In Progress {{inprogress.length}}</div>
+      </div>
+
+      <div>
+        <app-item-box [list]="inprogress"></app-item-box>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="column mr-3">
+    <div style="max-width: 250px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
+      <div>
+        <div class="h6 text-center my-4">Done {{done.length}}</div>
+      </div>
+
+      <div>
+        <app-item-box [list]="done"></app-item-box>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- </div> -->
