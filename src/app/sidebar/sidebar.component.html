@@ -5,26 +5,27 @@
       <mat-icon class="side-icon">grade</mat-icon>
     </div>
     <div class="side-icon mt-4 text-center">
-      <mat-icon class="side-icon">search</mat-icon>
+      <mat-icon class="side-icon" mat-raised-button matTooltipPosition="right" matTooltip="Search">search</mat-icon>
     </div>
     <div class="side-icon mt-4 text-center">
-      <mat-icon class="side-icon">add</mat-icon>
+
+      <mat-icon class="side-icon" mat-raised-button matTooltipPosition="right"
+      matTooltip="Create Issue">add</mat-icon>
     </div>
 
     <div class="side-icon text-center" style="margin-top: 30rem;" routerLink="/login">
-      <nz-avatar nzIcon="user"></nz-avatar>
+      <nz-avatar nzIcon="user"  mat-raised-button matTooltipPosition="right"
+      matTooltip="Log-In"></nz-avatar>
     </div>
 
   </mat-sidenav>
 
   <mat-sidenav-content>
     <!-- inner sidenav -->
-    <!-- *ngIf="opened" -->
     <mat-sidenav-container id="sidebar-wrapper">
       <mat-sidenav id="inner-container" mode="side" opened>
         <div class="ml-2" style="width: 190px;">
               <div class="text-center mt-4" style="color: black; font-size: 18px; ">{{name}}</div>
-              <!-- <div class="text-left mt-2">{{category}}</div> -->
         </div>
 
         <hr>

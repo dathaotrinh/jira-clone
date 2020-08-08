@@ -12,6 +12,9 @@ import { KanbanComponent } from './main/kanban/kanban.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './main/login/login.component';
+import { SettingsComponent } from './main/settings/settings.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Services
 import { MainService } from './shared/main.service';
@@ -23,9 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { SettingsComponent } from './main/settings/settings.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 // ng zorro
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -101,6 +102,7 @@ const routes: Routes = [
     QuillModule,
     NzCommentModule,
     NzListModule,
+    MatTooltipModule,
     QuillModule.forRoot(),
     RouterModule.forRoot(routes)
   ],

@@ -15,11 +15,12 @@ export class CommentComponent implements OnInit {
     avatar: ""
   };
   inputValue = '';
+  userId = 1
 
   constructor(private mainS: MainService) { }
 
   ngOnInit(): void {
-    this.mainS.getUser(1).subscribe((user) => {
+    this.mainS.getUser(this.userId).subscribe((user) => {
 
       this.user = {
         author: user.name,
