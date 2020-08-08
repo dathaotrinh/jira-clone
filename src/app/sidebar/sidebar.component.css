@@ -6,7 +6,7 @@
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
-  border-right: 1px solid lightgrey;
+  /* border-right: 1px solid lightgrey; */
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -15,7 +15,7 @@
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
+  width: 13rem;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -55,4 +55,11 @@ hr {
 
 .side-icon:hover {
   border: 1px dotted white;
+}
+
+
+.aligned-with-icon{
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px; /* optional */
 }
