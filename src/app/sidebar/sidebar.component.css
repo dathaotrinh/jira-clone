@@ -6,7 +6,6 @@
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
-  /* border-right: 1px solid lightgrey; */
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -36,6 +35,10 @@
   border: none;
 }
 
+.list-group-item:hover {
+  color: #0847A6;
+}
+
 hr {
   width: 90%;
 }
@@ -46,15 +49,13 @@ hr {
 }
 
 #inner-container {
-  background-color: #F8F9FA;
+  background-color: #F4F5F7;
 }
 
 .side-icon {
   cursor: pointer;
   color: white;
 }
-
-
 
 .aligned-with-icon{
   position: absolute;
