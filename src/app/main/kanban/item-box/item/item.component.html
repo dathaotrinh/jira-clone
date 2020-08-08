@@ -4,18 +4,18 @@
 </div>
 
 <div class="row ml-1 mt-3" style="width: 210px;">
-  <div class="mr-4" style="display: inline-block;">
-    <nz-avatar nz-comment-avatar nzIcon="user" [nzSize]="28" [nzSrc]="user.avatar"></nz-avatar>
+  <div class="mr-5" style="display: inline-block;">
+    <nz-avatar class="mt-1" nz-comment-avatar nzIcon="user" [nzSize]="25" [nzSrc]="user.avatar"></nz-avatar>
   </div>
   <div class="ml-5" style="display: inline-block;">
   </div>
 
 
-<div class="ml-5" style="display: inline-block; text-align: right;">
-  <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white;">check</mat-icon>
-  <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white;">turned_in_not</mat-icon>
-  <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;">error_outline</mat-icon>
-  <mat-icon [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon><span
+<div class="ml-5 mt-2" style="display: inline-block; text-align: right;">
+  <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
+  <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
+  <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
+  <mat-icon class="ml-2" [ngStyle]="{'color': priorityColor(priority)}" style="width: 18px; height: 18px; font-size: 18px;">arrow_upward</mat-icon><span
     class="aligned-with-icon"></span>
 </div>
 
@@ -28,27 +28,27 @@
   [nzWidth]="900" [nzClosable]="false">
   <div class="row mb-4">
     <div class="col-7">
-      <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white;">check</mat-icon>
-      <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white;">turned_in_not</mat-icon>
-      <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;">error_outline</mat-icon>
+      <mat-icon class="mt-2" *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
+      <mat-icon class="mt-2" *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
+      <mat-icon class="mt-2" *ngIf="type==='BUG'" style="background-color: #E5493A; color: white; width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
 
 
-      <span class="aligned-with-icon">{{type}}-{{id}}</span>
+      <span class="aligned-with-icon mt-2" style="font-size: 13px;">{{type}}-{{id}}</span>
     </div>
     <div class="col-1">
-      <mat-icon>visibility</mat-icon>
+      <mat-icon class="mt-2">visibility</mat-icon>
     </div>
     <div class="col-1">
-      <mat-icon>feedback</mat-icon>
+      <mat-icon class="mt-2">feedback</mat-icon>
     </div>
     <div class="col-1">
-      <mat-icon>share</mat-icon>
+      <mat-icon class="mt-2">share</mat-icon>
     </div>
     <div class="col-1">
-      <mat-icon>more_horiz</mat-icon>
+      <mat-icon class="mt-2">more_horiz</mat-icon>
     </div>
     <div class="col-1">
-      <mat-icon>close</mat-icon>
+      <mat-icon class="mt-2">close</mat-icon>
     </div>
   </div>
 

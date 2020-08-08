@@ -67,4 +67,11 @@ hr {
   color: #0847A6;
 }
 
+mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
 

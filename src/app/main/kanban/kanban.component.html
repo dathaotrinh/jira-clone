@@ -14,7 +14,7 @@
       [cdkDropListConnectedTo]="[selectedList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
       <div>
-        <div class="h6 text-center my-4">Backlog {{backlog.length}}</div>
+        <div class="h6 my-4 list-name">BACKLOG {{backlog.length}}</div>
       </div>
 
       <div>
@@ -28,7 +28,7 @@
       [cdkDropListConnectedTo]="[backlogList, inprogressList, doneList]" (cdkDropListDropped)="drop($event)">
 
       <div>
-        <div class="h6 text-center mt-2 my-4">Selected For Development {{selected.length}}</div>
+        <div class="h6 mt-2 my-4 list-name" >SELECTED FOR DEVELOPMENT {{selected.length}}</div>
       </div>
 
       <div>
@@ -43,7 +43,7 @@
       [cdkDropListConnectedTo]="[selectedList, backlogList, doneList]" (cdkDropListDropped)="drop($event)">
 
       <div>
-        <div class="h6 text-center mt-2 my-4">In Progress {{inprogress.length}}</div>
+        <div class="h6 mt-2 my-4 list-name">IN PROGRESS {{inprogress.length}}</div>
       </div>
 
       <div>
@@ -57,7 +57,7 @@
     <div style="max-width: 250px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="[selectedList, backlogList, inprogressList]" (cdkDropListDropped)="drop($event)">
       <div>
-        <div class="h6 text-center my-4">Done {{done.length}}</div>
+        <div class="h6 my-4 list-name">DONE {{done.length}}</div>
       </div>
 
       <div>
