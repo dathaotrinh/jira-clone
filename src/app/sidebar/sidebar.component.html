@@ -120,12 +120,35 @@
     </div>
 
     <label class="mt-2">Reporter</label>
+
     <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
       <!-- [(ngModel)]="selectedValue" -->
-      <nz-option nzLabel="Jack" nzValue="jack" ></nz-option>
-      <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-      <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+      <div *ngFor="let user of users" >
+
+        <nz-option nzCustomContent nzLabel="{{user.name}}" nzValue="{{user.name}}">  <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}</nz-option>
+      </div>
     </nz-select>
+
+
+    <label class="mt-2">Assignees</label>
+<div>
+  <nz-select
+  nzMode="multiple"
+  nzPlaceHolder="Select users"
+  nzAllowClear
+  nzShowSearch
+  nzServerSearch
+  [(ngModel)]="selectedUser"
+  (nzOnSearch)="onSearch($event)"
+>
+  <ng-container *ngFor="let o of optionList">
+    <nz-option *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o"></nz-option>
+  </ng-container>
+  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+    <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+  </nz-option>
+</nz-select>
+</div>
 
 
     <button class="my-3" nz-button nzType="primary"

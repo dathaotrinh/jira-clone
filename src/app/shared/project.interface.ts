@@ -6,4 +6,5 @@ export interface Project {
   category: string;
   createdAt: Date;
   updatedAt: Date;
+  users: string;
 }

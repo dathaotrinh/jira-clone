@@ -75,3 +75,11 @@ mat-icon {
   margin-right: 5px;
 }
 
+
+nz-select {
+  width: 100%;
+}
+
+.loading-icon {
+  margin-right: 8px;
+}
