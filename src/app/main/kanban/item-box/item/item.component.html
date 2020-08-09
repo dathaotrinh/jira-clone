@@ -1,119 +1,123 @@
-
 <div (click)="showModal()">
-  <div *cdkDragPlaceholder></div>
-  <div style="width: 210px;">{{item}}</div>
-</div>
 
-<div class="row ml-1 mt-3" style="width: 210px;">
-  <div class="mr-5" style="display: inline-block;">
-    <nz-avatar class="mt-1" nz-comment-avatar nzIcon="user" [nzSize]="25" [nzSrc]="user.avatar"></nz-avatar>
-  </div>
-  <div class="ml-5" style="display: inline-block;">
+  <div>
+    <div *cdkDragPlaceholder></div>
+    <div style="width: 210px;">{{item}}</div>
   </div>
 
-
-<div class="ml-5 mt-2" style="display: inline-block; text-align: right;">
-  <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
-  <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
-  <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
-  <mat-icon class="ml-2" [ngStyle]="{'color': priorityColor(priority)}" style="width: 18px; height: 18px; font-size: 18px;">arrow_upward</mat-icon><span
-    class="aligned-with-icon"></span>
-</div>
-
-
-</div>
-
-
-
-<nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="null"
-  [nzWidth]="900" [nzClosable]="false">
-  <div class="row mb-4">
-    <div class="col-7">
-      <mat-icon class="mt-2" *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
-      <mat-icon class="mt-2" *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
-      <mat-icon class="mt-2" *ngIf="type==='BUG'" style="background-color: #E5493A; color: white; width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
-
-
-      <span class="aligned-with-icon mt-2" style="font-size: 13px;">{{type}}-{{id}}</span>
+  <div class="row ml-1 mt-3" style="width: 210px;">
+    <div class="mr-5" style="display: inline-block;">
+      <nz-avatar class="mt-1" nz-comment-avatar nzIcon="user" [nzSize]="25" [nzSrc]="user.avatar"></nz-avatar>
     </div>
-    <div class="col-1">
-      <mat-icon class="mt-2">visibility</mat-icon>
+    <div class="ml-5" style="display: inline-block;">
     </div>
-    <div class="col-1">
-      <mat-icon class="mt-2">feedback</mat-icon>
-    </div>
-    <div class="col-1">
-      <mat-icon class="mt-2">share</mat-icon>
-    </div>
-    <div class="col-1">
-      <mat-icon class="mt-2">more_horiz</mat-icon>
-    </div>
-    <div class="col-1">
-      <mat-icon class="mt-2">close</mat-icon>
-    </div>
+
+
+  <div class="ml-5 mt-2" style="display: inline-block; text-align: right;">
+    <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
+    <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
+    <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
+    <mat-icon class="ml-2" [ngStyle]="{'color': priorityColor(priority)}" style="width: 18px; height: 18px; font-size: 18px;">arrow_upward</mat-icon><span
+      class="aligned-with-icon"></span>
   </div>
 
-  <div class="row">
-    <div class="col-8">
-      <h1>{{title}}</h1>
-      <p style="font-weight: bold;">Description</p>
+
+  </div>
 
 
 
-      <p (click)="onDescriptionChanged()" *ngIf="!onDescription">{{description}}</p>
-      <div id="quill" *ngIf="onDescription">
-        <quill-editor [(ngModel)]="description">
-        </quill-editor>
-        <button class="my-3" nz-button nzType="primary"
-          style="background-color: #0847A6; border-color: #0847A6;">Save</button>
-        <button nz-button nzType="default" style="border-color: white;">Cancel</button>
+  <nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzFooter]="null"
+    [nzWidth]="900" [nzClosable]="false">
+    <div class="row mb-4">
+      <div class="col-7">
+        <mat-icon class="mt-2" *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
+        <mat-icon class="mt-2" *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
+        <mat-icon class="mt-2" *ngIf="type==='BUG'" style="background-color: #E5493A; color: white; width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
+
+
+        <span class="aligned-with-icon mt-2" style="font-size: 13px;">{{type}}-{{id}}</span>
+      </div>
+      <div class="col-1">
+        <mat-icon class="mt-2">visibility</mat-icon>
+      </div>
+      <div class="col-1">
+        <mat-icon class="mt-2">feedback</mat-icon>
+      </div>
+      <div class="col-1">
+        <mat-icon class="mt-2">share</mat-icon>
+      </div>
+      <div class="col-1">
+        <mat-icon class="mt-2">more_horiz</mat-icon>
+      </div>
+      <div class="col-1">
+        <mat-icon class="mt-2">close</mat-icon>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <h1>{{title}}</h1>
+        <p style="font-weight: bold;">Description</p>
+
+
+
+        <p (click)="onDescriptionChanged()" *ngIf="!onDescription">{{description}}</p>
+        <div id="quill" *ngIf="onDescription">
+          <quill-editor [(ngModel)]="description">
+          </quill-editor>
+          <button class="my-3" nz-button nzType="primary"
+            style="background-color: #0847A6; border-color: #0847A6;">Save</button>
+          <button nz-button nzType="default" style="border-color: white;">Cancel</button>
+
+        </div>
+
+
+        <p style="font-weight: bold;">Comment</p>
+
+        <app-comment></app-comment>
+
 
       </div>
 
 
-      <p style="font-weight: bold;">Comment</p>
-
-      <app-comment></app-comment>
 
 
-    </div>
+      <div class="col-4">
+        <p style="font-weight: bold;">Status</p>
+        <nz-select style="width: 240px;" nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
+          <nz-option nzCustomContent nzLabel="Done" nzValue="done">Done</nz-option>
+          <nz-option nzCustomContent nzLabel="Selected For Development" nzValue="selected">Selected For Development
+          </nz-option>
+          <nz-option nzCustomContent nzLabel="In Progress" nzValue="inprogress">In Progress</nz-option>
+          <nz-option nzCustomContent nzLabel="Backlog" nzValue="backlog">Backlog</nz-option>
+        </nz-select>
+
+        <p class="mt-3" style="font-weight: bold;">Reporter</p>
+        <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
+        <span> {{reporterName}}</span>
+
+        <p class="mt-3" style="font-weight: bold;">Assignee</p>
+        <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
+        <span> {{reporterName}}</span>
+
+        <p class="mt-3" style="font-weight: bold;">Priority</p>
+
+        <div>
+          <mat-icon [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon><span
+            class="aligned-with-icon">{{priority}}</span>
+        </div>
 
 
+        <p class="mt-3" style="font-weight: bold;">Original Estimate</p>
 
+        <div>
 
-    <div class="col-4">
-      <p style="font-weight: bold;">Status</p>
-      <nz-select style="width: 240px;" nzShowSearch nzAllowClear nzPlaceHolder="Select OS" [(ngModel)]="selectedStatus">
-        <nz-option nzCustomContent nzLabel="Done" nzValue="done">Done</nz-option>
-        <nz-option nzCustomContent nzLabel="Selected For Development" nzValue="selected">Selected For Development
-        </nz-option>
-        <nz-option nzCustomContent nzLabel="In Progress" nzValue="inprogress">In Progress</nz-option>
-        <nz-option nzCustomContent nzLabel="Backlog" nzValue="backlog">Backlog</nz-option>
-      </nz-select>
-
-      <p class="mt-3" style="font-weight: bold;">Reporter</p>
-      <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
-      <span> {{reporterName}}</span>
-
-      <p class="mt-3" style="font-weight: bold;">Assignee</p>
-      <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
-      <span> {{reporterName}}</span>
-
-      <p class="mt-3" style="font-weight: bold;">Priority</p>
-
-      <div>
-        <mat-icon [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon><span
-          class="aligned-with-icon">{{priority}}</span>
-      </div>
-
-
-      <p class="mt-3" style="font-weight: bold;">Original Estimate</p>
-
-      <div>
-
+        </div>
       </div>
     </div>
-  </div>
 
 
-</nz-modal>
+  </nz-modal>
+
+
+</div>
