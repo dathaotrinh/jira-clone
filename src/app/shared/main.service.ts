@@ -15,12 +15,13 @@ export class MainService {
 
   projectUrl = "http://localhost:8080/api/projects/get/" + this.pid;
 
-
   projectsUrl = "http://localhost:8080/api/projects/get";
 
   issuesUrl = "http://localhost:8080/api/issues/get";
 
   userUrl = "http://localhost:8080/api/users/get/";
+
+  createIssueUrl = "http://localhost:8080/api/issues/create";
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +39,9 @@ export class MainService {
 
   getUser(id: number): Observable<User> {
     return this.http.get<User>(this.userUrl + id);
+  }
+
+  createIssue(issue: Issue) {
+    return this.http.post<Issue>(this.createIssueUrl, issue);
   }
 }

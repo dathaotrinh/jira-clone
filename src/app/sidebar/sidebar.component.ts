@@ -9,6 +9,7 @@ import { MainService } from '../shared/main.service';
 export class SidebarComponent implements OnInit {
   name = "";
   category = "";
+
   constructor(private mainS: MainService) {
   }
 
@@ -17,6 +18,10 @@ export class SidebarComponent implements OnInit {
       this.name = res.name;
       this.category = res.category;
     });
+  }
+
+  createIssue() {
+
   }
 
 }

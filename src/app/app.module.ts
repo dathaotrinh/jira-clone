@@ -21,12 +21,12 @@ import { MainService } from './shared/main.service';
 import { ModalService } from './shared/modal.service';
 
 // Angular Materials
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // ng zorro
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -45,24 +45,48 @@ import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzListModule } from 'ng-zorro-antd/list';
 
 // breadcrumb
-import {BreadcrumbModule} from 'angular-crumbs';
-
+import { BreadcrumbModule } from 'angular-crumbs';
 
 //quill
 import { QuillModule } from 'ngx-quill';
 import { ItemBoxComponent } from './main/kanban/item-box/item-box.component';
 import { ItemComponent } from './main/kanban/item-box/item/item.component';
-import { CommentComponent } from './main/kanban/item-box/item/comment/comment.component'
+import { CommentComponent } from './main/kanban/item-box/item/comment/comment.component';
 
 registerLocaleData(en);
 
 const routes: Routes = [
-  {path: "", redirectTo: "login", pathMatch: "full"},
- {path: "project", component: MainComponent, data: { breadcrumb: "Project"}, children: [
-    {path: "kanban-board", data: { breadcrumb: "Kanban Board"}, component: KanbanComponent},
-    {path: "settings", data: { breadcrumb: "Settings"}, component: SettingsComponent}
- ]},
- {path: "login", component: LoginComponent, data: {breadcrumb: "Login"}}
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'project',
+    component: MainComponent,
+    data: { breadcrumb: 'Project' },
+    children: [
+      {
+        path: 'kanban-board',
+        data: { breadcrumb: 'Kanban Board' },
+        component: KanbanComponent,
+        children: [
+          {
+            path: 'issues',
+            component: ItemBoxComponent,
+            children: [
+              {
+                path: ':id',
+                component: ItemComponent,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'settings',
+        data: { breadcrumb: 'Settings' },
+        component: SettingsComponent,
+      },
+    ],
+  },
+  { path: 'login', component: LoginComponent, data: { breadcrumb: 'Login' } },
 ];
 
 @NgModule({
@@ -76,7 +100,7 @@ const routes: Routes = [
     LoginComponent,
     ItemBoxComponent,
     ItemComponent,
-    CommentComponent
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,9 +128,9 @@ const routes: Routes = [
     NzListModule,
     MatTooltipModule,
     QuillModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [MainService, ModalService, { provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

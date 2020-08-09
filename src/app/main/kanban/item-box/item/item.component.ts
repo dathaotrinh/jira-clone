@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MainService } from 'src/app/shared/main.service';
+import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -28,7 +29,7 @@ export class ItemComponent implements OnInit {
   };
 
 
-  constructor(private mainS: MainService) { }
+  constructor(private mainS: MainService, private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.mainS.getIssues().subscribe((data) => {
@@ -63,10 +64,9 @@ export class ItemComponent implements OnInit {
 
   showModal(): void {
     this.isVisible = true;
+    this.router.navigate(['issues/' + this.type + '-' + this.id], { relativeTo: this.route });
+
   }
-
-
-
 
   handleOk(): void {
     this.isVisible = false;
@@ -75,6 +75,7 @@ export class ItemComponent implements OnInit {
   handleCancel(): void {
     this.isVisible = false;
     this.onDescription = false;
+    this.router.navigate(['././project/kanban-board'], { relativeTo: this.route });
   }
 
   priorityColor(priorityType: string): string {
