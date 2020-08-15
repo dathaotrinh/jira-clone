@@ -15,7 +15,7 @@ export class CommentComponent implements OnInit {
     avatar: ""
   };
   inputValue = '';
-  userId = 1
+  userId = 9
 
   constructor(private mainS: MainService) { }
 
