@@ -13,15 +13,15 @@ export class MainService {
 
   pid = 1;
 
-  projectUrl = "http://localhost:8080/api/projects/get/" + this.pid;
+  projectUrl = "https://jira-rest.herokuapp.com/api/projects/get/" + this.pid;
 
-  projectsUrl = "http://localhost:8080/api/projects/get";
+  projectsUrl = "https://jira-rest.herokuapp.com/api/projects/get";
 
-  issuesUrl = "http://localhost:8080/api/issues/get";
+  issuesUrl = "https://jira-rest.herokuapp.com/api/issues/get";
 
-  userUrl = "http://localhost:8080/api/users/get/";
+  userUrl = "https://jira-rest.herokuapp.com/api/users/get/";
 
-  createIssueUrl = "http://localhost:8080/api/issues/create";
+  createIssueUrl = "https://jira-rest.herokuapp.com/api/issues/create";
 
   constructor(private http: HttpClient) { }
 
