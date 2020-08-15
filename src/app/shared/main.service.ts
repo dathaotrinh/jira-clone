@@ -11,7 +11,7 @@ import { User } from 'src/app/shared/user.interface';
 export class MainService {
   toggleChanged = new Subject<boolean>();
 
-  pid = 1;
+  pid = 2;
 
   projectUrl = "https://jira-rest.herokuapp.com/api/projects/get/" + this.pid;
 
