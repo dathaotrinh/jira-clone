@@ -199,14 +199,14 @@
   <label class="mt-2">Reporter</label>
 
   <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear [nzCustomTemplate]="reporterTemplate">
-    <div *ngFor="let user of users">
-      <nz-option nzCustomContent nzLabel="{{user.name}}" nzValue="{{user.name}}">
+    <div *ngFor="let user of users; let i=index;">
+      <nz-option nzCustomContent nzLabel="{{user.name}}" [nzValue]="i" >
         <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
       </nz-option>
     </div>
     <ng-template #reporterTemplate let-selected>
-      <div class="ant-select-selection-item-content" *ngFor="let user of users">
-        <nz-avatar *ngIf="user.name===selected.nzValue" nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
+      <div class="ant-select-selection-item-content">
+        <nz-avatar nzIcon="user" [nzSrc]="users[selected.nzValue].avatarUrl"></nz-avatar> {{users[selected.nzValue].name}}
       </div>
     </ng-template>
 
