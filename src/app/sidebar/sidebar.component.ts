@@ -8,14 +8,15 @@ import { User } from '../shared/user.interface';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  name = "";
-  category = "";
+  name = '';
+  priority = '';
+  category = '';
   isVisible = false;
   users: UserClass[] = [];
-  i=0;
+  i = 0;
 
   searchChange$ = new BehaviorSubject('');
   optionList: string[] = [];
@@ -29,53 +30,54 @@ export class SidebarComponent implements OnInit {
   }
 
   editorStyle = {
-    height: '300px'
-  }
+    height: '300px',
+  };
 
-  config =
-  {
-    toolbar:[ ['bold', 'italic', 'underline', 'strike']]
-  }
+  config = {
+    toolbar: [['bold', 'italic', 'underline', 'strike']],
+  };
 
-  constructor(private mainS: MainService, private http: HttpClient) {
-  }
+  constructor(private mainS: MainService, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.mainS.getProject().subscribe(res => {
+    this.mainS.getProject().subscribe((res) => {
       this.name = res.name;
       this.category = res.category;
-      let usersid = res.users.split(",");
-      usersid.forEach(userid => {
-        this.mainS.getUser(parseInt(userid)).subscribe(ele => {
-          this.users[this.i] = new UserClass(ele.id, ele.name, ele.email, ele.avatarUrl, ele.createdAt, ele.updatedAt, ele.projectid);
+      let usersid = res.users.split(',');
+      usersid.forEach((userid) => {
+        this.mainS.getUser(parseInt(userid)).subscribe((ele) => {
+          this.users[this.i] = new UserClass(
+            ele.id,
+            ele.name,
+            ele.email,
+            ele.avatarUrl,
+            ele.createdAt,
+            ele.updatedAt,
+            ele.projectid
+          );
           this.i++;
-        })
+        });
       });
     });
 
     const getRandomNameList = (name: string) =>
-    this.mainS.getUsers()
-      .pipe(
+      this.mainS.getUsers().pipe(
         map((list: User[]) => {
           return list.map((item: User) => `${item.name}`);
         })
       );
 
-
     const optionList$: Observable<string[]> = this.searchChange$
-    .asObservable()
-    .pipe(debounceTime(500))
-    .pipe(switchMap(getRandomNameList));
-  optionList$.subscribe(data => {
-    this.optionList = data;
-    this.isLoading = false;
-  });
+      .asObservable()
+      .pipe(debounceTime(500))
+      .pipe(switchMap(getRandomNameList));
+    optionList$.subscribe((data) => {
+      this.optionList = data;
+      this.isLoading = false;
+    });
   }
 
-  createIssue() {
-
-
-  }
+  createIssue() {}
 
 
   showModal(): void {
@@ -92,7 +94,5 @@ export class SidebarComponent implements OnInit {
     this.isVisible = false;
   }
 
-  onSave() {
-
-  }
+  onSave() {}
 }

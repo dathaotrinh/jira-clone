@@ -17,7 +17,9 @@
     <mat-icon *ngIf="type==='TASK'" style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check</mat-icon>
     <mat-icon *ngIf="type==='STORY'" style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">turned_in_not</mat-icon>
     <mat-icon *ngIf="type==='BUG'" style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">error_outline</mat-icon>
-    <mat-icon class="ml-2" [ngStyle]="{'color': priorityColor(priority)}" style="width: 18px; height: 18px; font-size: 18px;">arrow_upward</mat-icon><span
+      <mat-icon *ngIf="priority !== 'Low' && priority !== 'Lowest'" [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon>
+      <mat-icon *ngIf="priority === 'Low' || priority === 'Lowest'"  [ngStyle]="{'color': priorityColor(priority)}">arrow_downward</mat-icon>
+      <span
       class="aligned-with-icon"></span>
   </div>
 
@@ -103,7 +105,10 @@
         <p class="mt-3" style="font-weight: bold;">Priority</p>
 
         <div>
-          <mat-icon [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon><span
+          <mat-icon *ngIf="priority !== 'Low' && priority !== 'Lowest'" [ngStyle]="{'color': priorityColor(priority)}">arrow_upward</mat-icon>
+          <mat-icon *ngIf="priority === 'Low' || priority === 'Lowest'"  [ngStyle]="{'color': priorityColor(priority)}">arrow_downward</mat-icon>
+
+          <span
             class="aligned-with-icon" class="mb-5 ml-2">{{priority}}</span>
         </div>
 

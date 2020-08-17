@@ -135,10 +135,56 @@
 
 
   <label class="mt-2">Issue priority</label>
-  <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
-    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+  <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear [nzCustomTemplate]="priorityTemplate">
+    <nz-option nzCustomContent nzLabel="HIGHEST" nzValue="highest">
+      <mat-icon [ngStyle]="{'color': 'red'}">arrow_upward</mat-icon>
+      HIGHEST
+    </nz-option>
+    <nz-option nzCustomContent nzLabel="HIGH" nzValue="high">
+      <mat-icon [ngStyle]="{'color': '#F06666'}">arrow_upward</mat-icon>
+      HIGH
+    </nz-option>
+
+    <nz-option nzCustomContent nzLabel="MEDIUM" nzValue="medium">
+      <mat-icon [ngStyle]="{'color': 'orange'}">arrow_upward</mat-icon>
+      MEDIUM
+    </nz-option>
+    <nz-option nzCustomContent nzLabel="LOW" nzValue="low">
+      <mat-icon [ngStyle]="{'color': 'green'}">arrow_downward</mat-icon>
+      LOW
+    </nz-option>
+    <nz-option nzCustomContent nzLabel="LOWEST" nzValue="lowest">
+      <mat-icon [ngStyle]="{'color': 'lightgreen'}">arrow_downward</mat-icon>
+      LOWEST
+    </nz-option>
+
+    <ng-template #priorityTemplate let-selected>
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='highest'">
+        <mat-icon [ngStyle]="{'color': 'red'}">arrow_upward</mat-icon>
+        HIGHEST
+      </div>
+
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='high'">
+        <mat-icon [ngStyle]="{'color': '#F06666'}">arrow_upward</mat-icon>
+        HIGH
+      </div>
+
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='medium'">
+        <mat-icon [ngStyle]="{'color': 'orange'}">arrow_upward</mat-icon>
+        MEDIUM
+      </div>
+
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='low'">
+        <mat-icon [ngStyle]="{'color': 'green'}">arrow_downward</mat-icon>
+        LOW
+      </div>
+
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='lowest'">
+        <mat-icon [ngStyle]="{'color': 'lightgreen'}">arrow_downward</mat-icon>
+        LOWEST
+      </div>
+    </ng-template>
+
   </nz-select>
 
   <label class="mt-2">Short summary</label>
@@ -152,14 +198,18 @@
 
   <label class="mt-2">Reporter</label>
 
-  <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
-    <!-- [(ngModel)]="selectedValue" -->
+  <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear [nzCustomTemplate]="reporterTemplate">
     <div *ngFor="let user of users">
-
       <nz-option nzCustomContent nzLabel="{{user.name}}" nzValue="{{user.name}}">
         <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
       </nz-option>
     </div>
+    <ng-template #reporterTemplate let-selected>
+      <div class="ant-select-selection-item-content" *ngFor="let user of users">
+        <nz-avatar *ngIf="user.name===selected.nzValue" nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
+      </div>
+    </ng-template>
+
   </nz-select>
 
 
