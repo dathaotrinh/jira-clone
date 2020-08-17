@@ -44,6 +44,7 @@ export class SidebarComponent implements OnInit {
       this.name = res.name;
       this.category = res.category;
       let usersid = res.users.split(',');
+      console.log(usersid)
       usersid.forEach((userid) => {
         this.mainS.getUser(parseInt(userid)).subscribe((ele) => {
           this.users[this.i] = new UserClass(

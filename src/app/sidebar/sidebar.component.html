@@ -215,14 +215,22 @@
 
   <label class="mt-2">Assignees</label>
   <div>
-    <nz-select nzMode="multiple" nzPlaceHolder="Select users" nzAllowClear nzShowSearch nzServerSearch
+    <nz-select nzMode="multiple" nzPlaceHolder="Select users" nzAllowClear nzShowSearch nzServerSearch [nzCustomTemplate]="assigneeTemplate"
       [(ngModel)]="selectedUser" (nzOnSearch)="onSearch($event)">
-      <ng-container *ngFor="let o of optionList">
-        <nz-option *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o"></nz-option>
+      <ng-container *ngFor="let o of optionList; let i=index">
+        <nz-option *ngIf="!isLoading" [nzValue]="i" [nzLabel]="users[i].name">
+          <nz-avatar nzIcon="user" nzSrc="{{users[i].avatarUrl}}"></nz-avatar> {{users[i].name}}
+        </nz-option>
       </ng-container>
       <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
         <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
       </nz-option>
+
+      <ng-template #assigneeTemplate let-selected>
+        <div class="ant-select-selection-item-content">
+          <nz-avatar nzIcon="user" [nzSrc]="users[selected.nzValue].avatarUrl"></nz-avatar> {{users[selected.nzValue].name}}
+        </div>
+      </ng-template>
     </nz-select>
   </div>
 
