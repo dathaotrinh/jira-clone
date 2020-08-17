@@ -15,6 +15,7 @@ import { LoginComponent } from './main/login/login.component';
 import { SettingsComponent } from './main/settings/settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemDetailComponent } from './main/kanban/item-box/item-detail/item-detail.component';
 
 // Services
 import { MainService } from './shared/main.service';
@@ -101,6 +102,7 @@ const routes: Routes = [
     ItemBoxComponent,
     ItemComponent,
     CommentComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
