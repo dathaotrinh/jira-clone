@@ -9,13 +9,12 @@
     </div>
     <div class="side-icon mt-4 text-center">
 
-      <mat-icon class="side-icon" mat-raised-button matTooltipPosition="right"
-      matTooltip="Create Issue" (click)="showModal()">add</mat-icon>
+      <mat-icon class="side-icon" mat-raised-button matTooltipPosition="right" matTooltip="Create Issue"
+        (click)="showModal()">add</mat-icon>
     </div>
 
     <div class="side-icon text-center" style="margin-top: 30rem;" routerLink="/login">
-      <nz-avatar nzIcon="user"  mat-raised-button matTooltipPosition="right"
-      matTooltip="Log-In"></nz-avatar>
+      <nz-avatar nzIcon="user" mat-raised-button matTooltipPosition="right" matTooltip="Log-In"></nz-avatar>
     </div>
 
   </mat-sidenav>
@@ -25,13 +24,13 @@
     <mat-sidenav-container id="sidebar-wrapper">
       <mat-sidenav id="inner-container" mode="side" opened>
         <div class="ml-2" style="width: 190px;">
-              <div class="text-center mt-4" style="color: black; font-size: 18px; ">{{name}}</div>
+          <div class="text-center mt-4" style="color: black; font-size: 18px; ">{{name}}</div>
         </div>
 
         <hr>
         <div class="list-group list-group-flush">
-          <a routerLink="/project/kanban-board" routerLinkActive="active"
-            class="list-group-item list-group-item-action" style="  background-color: #F4F5F7;
+          <a routerLink="/project/kanban-board" routerLinkActive="active" class="list-group-item list-group-item-action"
+            style="  background-color: #F4F5F7;
             ">
             <div class="ml-3">
 
@@ -39,8 +38,8 @@
               <span class="aligned-with-icon">Kanban Board</span>
             </div>
           </a>
-          <a routerLink="/project/settings" routerLinkActive="active"
-            class="list-group-item list-group-item-action" style="  background-color: #F4F5F7;
+          <a routerLink="/project/settings" routerLinkActive="active" class="list-group-item list-group-item-action"
+            style="  background-color: #F4F5F7;
             ">
             <div class="ml-3">
 
@@ -89,70 +88,97 @@
 </mat-sidenav-container>
 
 
-<nz-modal [(nzVisible)]="isVisible" nzClosable="false" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" nzWidth='700px' nzFooter='null'>
+<nz-modal [(nzVisible)]="isVisible" nzClosable="false" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  nzWidth='700px' nzFooter='null'>
 
   <h2 style="font-weight: normal;">Create issue</h2>
 
-    <label>Issue type</label>
+  <label>Issue type</label>
 
-    <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear>
-      <!-- [(ngModel)]="selectedValue" -->
-      <nz-option nzLabel="Jack" nzValue="jack" ></nz-option>
-      <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-      <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
-    </nz-select>
+  <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear [nzCustomTemplate]="typeTemplate">
+    <nz-option nzCustomContent nzLabel="TASK" nzValue="task">
+      <mat-icon style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check
+      </mat-icon>
+      TASK
+    </nz-option>
 
-    <label class="mt-2">Issue priority</label>
-    <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
-      <!-- [(ngModel)]="selectedValue" -->
-      <nz-option nzLabel="Jack" nzValue="jack" ></nz-option>
-      <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-      <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
-    </nz-select>
+    <nz-option nzCustomContent nzLabel="STORY" nzValue="story">
+      <mat-icon style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">
+        turned_in_not</mat-icon>
+      STORY
+    </nz-option>
 
-    <label class="mt-2">Short summary</label>
-    <input nz-input nzSize="default" />
+    <nz-option nzCustomContent nzLabel="BUG" nzValue="bug">
+      <mat-icon style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">
+        error_outline</mat-icon>
+      BUG
+    </nz-option>
 
-    <label class="mt-2">Description</label>
-
-    <div id="quill">
-      <quill-editor [style]="editorStyle" [modules]="config"></quill-editor>
-    </div>
-
-    <label class="mt-2">Reporter</label>
-
-    <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
-      <!-- [(ngModel)]="selectedValue" -->
-      <div *ngFor="let user of users" >
-
-        <nz-option nzCustomContent nzLabel="{{user.name}}" nzValue="{{user.name}}">  <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}</nz-option>
+    <ng-template #typeTemplate let-selected>
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='story'">
+        <mat-icon style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">
+          turned_in_not</mat-icon>{{ selected.nzLabel }}
       </div>
+
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='task'">
+        <mat-icon style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check
+        </mat-icon>{{ selected.nzLabel }}
+      </div>
+
+      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='bug'">
+        <mat-icon style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">
+          error_outline</mat-icon>{{ selected.nzLabel }}
+      </div>
+    </ng-template>
+
+  </nz-select>
+
+
+  <label class="mt-2">Issue priority</label>
+  <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
+    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+  </nz-select>
+
+  <label class="mt-2">Short summary</label>
+  <input nz-input nzSize="default" />
+
+  <label class="mt-2">Description</label>
+
+  <div id="quill">
+    <quill-editor [style]="editorStyle" [modules]="config"></quill-editor>
+  </div>
+
+  <label class="mt-2">Reporter</label>
+
+  <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear>
+    <!-- [(ngModel)]="selectedValue" -->
+    <div *ngFor="let user of users">
+
+      <nz-option nzCustomContent nzLabel="{{user.name}}" nzValue="{{user.name}}">
+        <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
+      </nz-option>
+    </div>
+  </nz-select>
+
+
+  <label class="mt-2">Assignees</label>
+  <div>
+    <nz-select nzMode="multiple" nzPlaceHolder="Select users" nzAllowClear nzShowSearch nzServerSearch
+      [(ngModel)]="selectedUser" (nzOnSearch)="onSearch($event)">
+      <ng-container *ngFor="let o of optionList">
+        <nz-option *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o"></nz-option>
+      </ng-container>
+      <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+      </nz-option>
     </nz-select>
+  </div>
 
 
-    <label class="mt-2">Assignees</label>
-<div>
-  <nz-select
-  nzMode="multiple"
-  nzPlaceHolder="Select users"
-  nzAllowClear
-  nzShowSearch
-  nzServerSearch
-  [(ngModel)]="selectedUser"
-  (nzOnSearch)="onSearch($event)"
->
-  <ng-container *ngFor="let o of optionList">
-    <nz-option *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o"></nz-option>
-  </ng-container>
-  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
-    <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
-  </nz-option>
-</nz-select>
-</div>
-
-
-    <button class="my-3" nz-button nzType="primary"
-    style="background-color: #0847A6; border-color: #0847A6;">Save</button>
+  <button class="my-3" nz-button nzType="primary" style="background-color: #0847A6; border-color: #0847A6;"
+    (click)="onSave()">Save</button>
   <button nz-button nzType="default" style="border-color: white;">Cancel</button>
 
-  </nz-modal>
+</nz-modal>

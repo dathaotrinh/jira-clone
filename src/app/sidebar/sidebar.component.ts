@@ -78,9 +78,6 @@ export class SidebarComponent implements OnInit {
   }
 
 
-
-
-
   showModal(): void {
     this.isVisible = true;
   }
@@ -95,4 +92,7 @@ export class SidebarComponent implements OnInit {
     this.isVisible = false;
   }
 
+  onSave() {
+
+  }
 }
