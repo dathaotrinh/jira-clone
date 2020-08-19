@@ -87,156 +87,168 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
+<!-- FORM -->
 
 <nz-modal [(nzVisible)]="isVisible" nzClosable="false" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
   nzWidth='700px' nzFooter='null'>
 
   <h2 style="font-weight: normal;">Create issue</h2>
 
-  <label>Issue type</label>
+  <form #signupForm='ngForm' (ngSubmit)="onSave(signupForm)">
 
-  <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear [nzCustomTemplate]="typeTemplate">
-    <nz-option nzCustomContent nzLabel="TASK" nzValue="task">
-      <mat-icon style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check
-      </mat-icon>
-      TASK
-    </nz-option>
+    <label>Issue type</label>
 
-    <nz-option nzCustomContent nzLabel="STORY" nzValue="story">
-      <mat-icon style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">
-        turned_in_not</mat-icon>
-      STORY
-    </nz-option>
-
-    <nz-option nzCustomContent nzLabel="BUG" nzValue="bug">
-      <mat-icon style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">
-        error_outline</mat-icon>
-      BUG
-    </nz-option>
-
-    <ng-template #typeTemplate let-selected>
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='story'">
-        <mat-icon style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">
-          turned_in_not</mat-icon>{{ selected.nzLabel }}
-      </div>
-
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='task'">
+    <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear [nzCustomTemplate]="typeTemplate" ngModel
+      name="issueType" required>
+      <nz-option nzCustomContent nzLabel="TASK" nzValue="task">
         <mat-icon style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check
-        </mat-icon>{{ selected.nzLabel }}
-      </div>
+        </mat-icon>
+        TASK
+      </nz-option>
 
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='bug'">
+      <nz-option nzCustomContent nzLabel="STORY" nzValue="story">
+        <mat-icon style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">
+          turned_in_not</mat-icon>
+        STORY
+      </nz-option>
+
+      <nz-option nzCustomContent nzLabel="BUG" nzValue="bug">
         <mat-icon style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">
-          error_outline</mat-icon>{{ selected.nzLabel }}
-      </div>
-    </ng-template>
-
-  </nz-select>
-
-
-  <label class="mt-2">Issue priority</label>
-  <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear [nzCustomTemplate]="priorityTemplate">
-    <nz-option nzCustomContent nzLabel="HIGHEST" nzValue="highest">
-      <mat-icon [ngStyle]="{'color': 'red'}">arrow_upward</mat-icon>
-      HIGHEST
-    </nz-option>
-    <nz-option nzCustomContent nzLabel="HIGH" nzValue="high">
-      <mat-icon [ngStyle]="{'color': '#F06666'}">arrow_upward</mat-icon>
-      HIGH
-    </nz-option>
-
-    <nz-option nzCustomContent nzLabel="MEDIUM" nzValue="medium">
-      <mat-icon [ngStyle]="{'color': 'orange'}">arrow_upward</mat-icon>
-      MEDIUM
-    </nz-option>
-    <nz-option nzCustomContent nzLabel="LOW" nzValue="low">
-      <mat-icon [ngStyle]="{'color': 'green'}">arrow_downward</mat-icon>
-      LOW
-    </nz-option>
-    <nz-option nzCustomContent nzLabel="LOWEST" nzValue="lowest">
-      <mat-icon [ngStyle]="{'color': 'lightgreen'}">arrow_downward</mat-icon>
-      LOWEST
-    </nz-option>
-
-    <ng-template #priorityTemplate let-selected>
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='highest'">
-        <mat-icon [ngStyle]="{'color': 'red'}">arrow_upward</mat-icon>
-        HIGHEST
-      </div>
-
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='high'">
-        <mat-icon [ngStyle]="{'color': '#F06666'}">arrow_upward</mat-icon>
-        HIGH
-      </div>
-
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='medium'">
-        <mat-icon [ngStyle]="{'color': 'orange'}">arrow_upward</mat-icon>
-        MEDIUM
-      </div>
-
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='low'">
-        <mat-icon [ngStyle]="{'color': 'green'}">arrow_downward</mat-icon>
-        LOW
-      </div>
-
-      <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='lowest'">
-        <mat-icon [ngStyle]="{'color': 'lightgreen'}">arrow_downward</mat-icon>
-        LOWEST
-      </div>
-    </ng-template>
-
-  </nz-select>
-
-  <label class="mt-2">Short summary</label>
-  <input nz-input nzSize="default" />
-
-  <label class="mt-2">Description</label>
-
-  <div id="quill">
-    <quill-editor [style]="editorStyle" [modules]="config"></quill-editor>
-  </div>
-
-  <label class="mt-2">Reporter</label>
-
-  <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear [nzCustomTemplate]="reporterTemplate">
-    <div *ngFor="let user of users; let i=index;">
-      <nz-option nzCustomContent nzLabel="{{user.name}}" [nzValue]="i" >
-        <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
-      </nz-option>
-    </div>
-    <ng-template #reporterTemplate let-selected>
-      <div class="ant-select-selection-item-content">
-        <nz-avatar nzIcon="user" [nzSrc]="users[selected.nzValue].avatarUrl"></nz-avatar> {{users[selected.nzValue].name}}
-      </div>
-    </ng-template>
-
-  </nz-select>
-
-
-  <label class="mt-2">Assignees</label>
-  <div>
-    <nz-select nzMode="multiple" nzPlaceHolder="Select users" nzAllowClear nzShowSearch nzServerSearch [nzCustomTemplate]="assigneeTemplate"
-      [(ngModel)]="selectedUser" (nzOnSearch)="onSearch($event)">
-      <ng-container *ngFor="let o of optionList; let i=index">
-        <nz-option *ngIf="!isLoading" [nzValue]="i" [nzLabel]="users[i].name">
-          <nz-avatar nzIcon="user" nzSrc="{{users[i].avatarUrl}}"></nz-avatar> {{users[i].name}}
-        </nz-option>
-      </ng-container>
-      <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
-        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+          error_outline</mat-icon>
+        BUG
       </nz-option>
 
-      <ng-template #assigneeTemplate let-selected>
-        <div class="ant-select-selection-item-content">
-          <nz-avatar nzIcon="user" [nzSrc]="users[selected.nzValue].avatarUrl"></nz-avatar> {{users[selected.nzValue].name}}
+      <ng-template #typeTemplate let-selected>
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='story'">
+          <mat-icon style="background-color: #63BA3C; color: white; width: 15px; height: 15px; font-size: 15px;">
+            turned_in_not</mat-icon>{{ selected.nzLabel }}
+        </div>
+
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='task'">
+          <mat-icon style="background-color: #4BADE8; color: white; width: 15px; height: 15px; font-size: 15px;">check
+          </mat-icon>{{ selected.nzLabel }}
+        </div>
+
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='bug'">
+          <mat-icon style="background-color: #E5493A; color: white;width: 15px; height: 15px; font-size: 15px;">
+            error_outline</mat-icon>{{ selected.nzLabel }}
         </div>
       </ng-template>
+
     </nz-select>
-  </div>
 
 
-  <button class="my-3" nz-button nzType="primary" style="background-color: #0847A6; border-color: #0847A6;"
-    (click)="onSave()">Save</button>
-  <button nz-button nzType="default" style="border-color: white;">Cancel</button>
+    <label class="mt-2">Issue priority</label>
+    <nz-select style="width: 100%;" nzSize="default" nzShowSearch nzAllowClear [nzCustomTemplate]="priorityTemplate"
+      ngModel name="issuePriority" required>
+      <nz-option nzCustomContent nzLabel="HIGHEST" nzValue="highest">
+        <mat-icon [ngStyle]="{'color': 'red'}">arrow_upward</mat-icon>
+        HIGHEST
+      </nz-option>
+      <nz-option nzCustomContent nzLabel="HIGH" nzValue="high">
+        <mat-icon [ngStyle]="{'color': '#F06666'}">arrow_upward</mat-icon>
+        HIGH
+      </nz-option>
+
+      <nz-option nzCustomContent nzLabel="MEDIUM" nzValue="medium">
+        <mat-icon [ngStyle]="{'color': 'orange'}">arrow_upward</mat-icon>
+        MEDIUM
+      </nz-option>
+      <nz-option nzCustomContent nzLabel="LOW" nzValue="low">
+        <mat-icon [ngStyle]="{'color': 'green'}">arrow_downward</mat-icon>
+        LOW
+      </nz-option>
+      <nz-option nzCustomContent nzLabel="LOWEST" nzValue="lowest">
+        <mat-icon [ngStyle]="{'color': 'lightgreen'}">arrow_downward</mat-icon>
+        LOWEST
+      </nz-option>
+
+      <ng-template #priorityTemplate let-selected>
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='highest'">
+          <mat-icon [ngStyle]="{'color': 'red'}">arrow_upward</mat-icon>
+          HIGHEST
+        </div>
+
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='high'">
+          <mat-icon [ngStyle]="{'color': '#F06666'}">arrow_upward</mat-icon>
+          HIGH
+        </div>
+
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='medium'">
+          <mat-icon [ngStyle]="{'color': 'orange'}">arrow_upward</mat-icon>
+          MEDIUM
+        </div>
+
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='low'">
+          <mat-icon [ngStyle]="{'color': 'green'}">arrow_downward</mat-icon>
+          LOW
+        </div>
+
+        <div class="ant-select-selection-item-content" *ngIf="selected.nzValue==='lowest'">
+          <mat-icon [ngStyle]="{'color': 'lightgreen'}">arrow_downward</mat-icon>
+          LOWEST
+        </div>
+      </ng-template>
+
+    </nz-select>
+
+    <label class="mt-2">Short summary</label>
+    <input nz-input nzSize="default" ngModel name="title" required />
+
+    <label class="mt-2">Description</label>
+
+    <div id="quill">
+      <quill-editor [style]="editorStyle" [modules]="config" ngModel name="description" required></quill-editor>
+    </div>
+
+    <label class="mt-2">Reporter</label>
+
+    <nz-select style="width: 100%;" nzSize='default' nzShowSearch nzAllowClear [nzCustomTemplate]="reporterTemplate"
+      ngModel name="reporter" required>
+      <div *ngFor="let user of users; let i=index;">
+        <nz-option nzCustomContent nzLabel="{{user.name}}" [nzValue]="i">
+          <nz-avatar nzIcon="user" nzSrc="{{user.avatarUrl}}"></nz-avatar> {{user.name}}
+        </nz-option>
+      </div>
+      <ng-template #reporterTemplate let-selected>
+        <div class="ant-select-selection-item-content">
+          <nz-avatar nzIcon="user" [nzSrc]="users[selected.nzValue].avatarUrl"></nz-avatar>
+          {{users[selected.nzValue].name}}
+        </div>
+      </ng-template>
+
+    </nz-select>
+
+
+    <label class="mt-2">Assignees</label>
+    <div>
+      <input type="hidden" ngModel name="assignees">
+      <nz-select nzMode="multiple" nzPlaceHolder="Select users" nzAllowClear nzShowSearch nzServerSearch
+        [(ngModel)]="listOfSelectedValue" [ngModelOptions]="{standalone: true}" [nzCustomTemplate]="assigneeTemplate"
+        (nzOnSearch)="onSearch($event)">
+        <ng-container *ngFor="let o of optionList; let i=index">
+          <nz-option *ngIf="!isLoading" [nzValue]="i" [nzLabel]="users[i].name">
+            <nz-avatar nzIcon="user" nzSrc="{{users[i].avatarUrl}}"></nz-avatar> {{users[i].name}}
+          </nz-option>
+        </ng-container>
+        <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+          <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+        </nz-option>
+
+        <ng-template #assigneeTemplate let-selected>
+          <div class="ant-select-selection-item-content">
+            <nz-avatar nzIcon="user" [nzSrc]="users[selected.nzValue].avatarUrl"></nz-avatar>
+            {{users[selected.nzValue].name}}
+          </div>
+        </ng-template>
+      </nz-select>
+    </div>
+
+
+    <button class="my-3" nz-button nzType="primary"
+      style="background-color: #0847A6; border-color: #0847A6;">Save</button>
+    <button nz-button nzType="default" style="border-color: white;" (click)="onCancel()">Cancel</button>
+
+  </form>
 
 </nz-modal>

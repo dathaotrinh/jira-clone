@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { debounceTime, map, switchMap, filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../shared/user.interface';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -17,6 +18,7 @@ export class SidebarComponent implements OnInit {
   isVisible = false;
   users: UserClass[] = [];
   i = 0;
+  listOfSelectedValue = [];
 
   searchChange$ = new BehaviorSubject('');
   optionList: string[] = [];
@@ -78,8 +80,6 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  createIssue() {}
-
 
   showModal(): void {
     this.isVisible = true;
@@ -95,5 +95,29 @@ export class SidebarComponent implements OnInit {
     this.isVisible = false;
   }
 
-  onSave() {}
+  onSave(form: NgForm) {
+
+    console.log(form.value);
+    console.log(this.listOfSelectedValue[0]);
+
+
+    console.log(this.users[this.listOfSelectedValue[0]].id);
+
+    let selectedAssignees = [];
+    this.listOfSelectedValue.forEach(value => selectedAssignees.push(this.users[value].id));
+
+    form.setValue({
+      "title": form.value['title'],
+      "issueType": form.value['issueType'],
+      "issuePriority": form.value['issuePriority'],
+      "description": form.value['description'],
+      "reporter": form.value['reporter'],
+      "assignees": selectedAssignees.toString()
+      });
+
+  }
+
+  onCancel() {
+    this.isVisible = false;
+  }
 }
