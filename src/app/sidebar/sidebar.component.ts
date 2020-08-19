@@ -6,6 +6,8 @@ import { debounceTime, map, switchMap, filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../shared/user.interface';
 import { NgForm } from '@angular/forms';
+import { IssueClass } from '../shared/issue.modal';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -106,14 +108,17 @@ export class SidebarComponent implements OnInit {
     let selectedAssignees = [];
     this.listOfSelectedValue.forEach(value => selectedAssignees.push(this.users[value].id));
 
-    form.setValue({
-      "title": form.value['title'],
-      "issueType": form.value['issueType'],
-      "issuePriority": form.value['issuePriority'],
-      "description": form.value['description'],
-      "reporter": form.value['reporter'],
-      "assignees": selectedAssignees.toString()
-      });
+      let title =  form.value['title'];
+      let issueType = form.value['issueType'];
+      let issuePriority =form.value['issuePriority'];
+      let description = form.value['description'];
+      let reporterid = this.users[form.value['reporter']].id;
+      let assignees = selectedAssignees.toString();
+
+
+      const issue = new IssueClass(title, issueType, issuePriority, "backlog", description, reporterid, assignees, this.mainS.pid);
+
+      this.mainS.createIssue(issue).subscribe();
 
   }
 

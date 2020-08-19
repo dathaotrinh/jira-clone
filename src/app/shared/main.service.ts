@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Project } from 'src/app/shared/project.interface';
 import { Issue } from 'src/app/shared/issue.interface';
 import { User } from 'src/app/shared/user.interface';
+import { IssueClass } from './issue.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class MainService {
   getUsers() : Observable<User[]> {
     return this.http.get<User[]>(this.userUrl);
   }
-  createIssue(issue: Issue) {
-    return this.http.post<Issue>(this.createIssueUrl, issue);
+  createIssue(issue: IssueClass) {
+    return this.http.post<IssueClass>(this.createIssueUrl, issue);
   }
 }

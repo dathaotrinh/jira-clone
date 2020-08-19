@@ -12,4 +12,5 @@ export interface Issue {
   updatedAt: Date;
   reporterid: number;
   projectid: number;
+  assignees: string;
 }
