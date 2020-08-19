@@ -100,10 +100,6 @@ export class SidebarComponent implements OnInit {
   onSave(form: NgForm) {
 
     console.log(form.value);
-    console.log(this.listOfSelectedValue[0]);
-
-
-    console.log(this.users[this.listOfSelectedValue[0]].id);
 
     let selectedAssignees = [];
     this.listOfSelectedValue.forEach(value => selectedAssignees.push(this.users[value].id));
@@ -116,6 +112,7 @@ export class SidebarComponent implements OnInit {
       let assignees = selectedAssignees.toString();
 
 
+      console.log(reporterid)
       const issue = new IssueClass(title, issueType, issuePriority, "backlog", description, reporterid, assignees, this.mainS.pid);
 
       this.mainS.createIssue(issue).subscribe();

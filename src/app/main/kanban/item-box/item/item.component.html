@@ -99,8 +99,11 @@
         <span> {{reporterName}}</span>
 
         <p class="mt-3" style="font-weight: bold;">Assignee</p>
-        <nz-avatar nzIcon="user" nzSrc={{avatar}}></nz-avatar>
-        <span> {{reporterName}}</span>
+        <span *ngFor="let assignee of assigneeInfo">
+          <nz-avatar nzIcon="user" [nzSrc]="assignee['avatar']"></nz-avatar>
+          <span> {{assignee['name']}}</span>
+        </span>
+
 
         <p class="mt-3" style="font-weight: bold;">Priority</p>
 

@@ -22,6 +22,9 @@ export class ItemComponent implements OnInit {
   avatar = '';
   isVisible = false;
   selectedStatus = null;
+  assignees = [];
+
+  assigneeInfo = [];
 
   user = {
     author: "",
@@ -45,6 +48,17 @@ export class ItemComponent implements OnInit {
       this.description = temp[0].description;
 
       this.selectedStatus = temp[0].issueStatus;
+
+      this.assignees = temp[0].assignees.split(",");
+
+      this.assignees.forEach(info => {
+        this.mainS.getUser(info).subscribe(res => {
+          this.assigneeInfo.push({
+            author : res.name,
+            avatar: res.avatarUrl
+          })
+        })
+      })
 
       this.priority =
         temp[0].issuePriority.charAt(0).toUpperCase() +
